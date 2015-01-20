@@ -1,0 +1,319 @@
+%!PS-Adobe-3.0 EPSF-3.0
+%%Title:   Template 'Reaction2_reactant1_reactant0'.
+%%Creator: (Academic) UPPAAL 4.0.13 (rev. 4577), September 2010
+%%Pages: 0
+%%BoundingBox: -814 -513 -434 -251
+%%EndComments
+
+% Basic coordinate transformation.
+0.5 0.5 scale
+
+% Move the origin.
+0 -1528 translate
+
+% Size of graphical elements.
+/vertex-radius 12 def
+/vertex-urgent-radius 5 def
+/vertex-commit-radius 5 def
+/vertex-init-radius 8 def
+/vertex-lw 1.2 def
+/edge-lw 1.0 def
+
+% Color setting of graphical elements.
+/black { 0 0 0 setrgbcolor } def
+/vertex-fill-col { 0.647 0.686 0.803 setrgbcolor} def
+/vertex-ol-col { black } def
+/urgent-ol-col { black } def
+/commit-ol-col { black } def
+/initial-ol-col { black } def
+/state-name-col { 0.549 0.2196 0.3882 setrgbcolor } def
+/inv-col { 0.6549 0.2588 0.6588 setrgbcolor } def
+/select-col { 0.6392 0.6588 0.2588 setrgbcolor } def
+/guard-col { 0.2588 0.6588 0.2824 setrgbcolor } def
+/sync-col { 0.2588 0.6275 0.6588 setrgbcolor } def
+/assign-col { 0.2588 0.2588 0.6588 setrgbcolor } def
+/trans-col { black } def
+
+% Draw (filled) vertex at given position.
+/vertex { 
+   2 copy
+   vertex-fill-col
+   newpath vertex-lw setlinewidth 
+   /vertex-radius load 0 360 arc fill
+   vertex-ol-col
+   /vertex-radius load 0 360 arc stroke
+} def
+
+% Mark vertex as urgent.
+/urgent { 
+   urgent-ol-col
+   newpath vertex-lw setlinewidth 
+   /vertex-urgent-radius load 150 30 arc stroke 
+} def
+
+% Mark vertex as committed.
+/commit { 
+   commit-ol-col
+   newpath vertex-lw setlinewidth 
+   /vertex-commit-radius load 50 310 arc stroke 
+} def
+
+% Mark vertex as initial.
+/initial { 
+   initial-ol-col
+   newpath vertex-lw setlinewidth 
+   /vertex-init-radius load 0 360 arc stroke 
+} def
+
+% Vertices.
+% Font used for vertex names and invariants.
+/Helvetica-Bold findfont 14 scalefont setfont
+-1328 952 vertex
+   -1320 962 moveto state-name-col (s3) show
+   0 -14 moveto inv-col () show
+-1064 800 vertex
+   -1064 800 urgent
+   -1056 810 moveto state-name-col (s4) show
+   0 -14 moveto inv-col () show
+-1328 696 vertex
+   -1312 698 moveto state-name-col (s2) show
+   -1552 706 moveto inv-col (tU[r2o][r1o] == INFINITE_TIME) show
+   -1552 692 moveto inv-col (|| c<=tU[r2o][r1o]) show
+-1328 840 vertex
+   -1328 840 initial
+   -1328 840 urgent
+   -1320 850 moveto state-name-col (s1) show
+   0 -14 moveto inv-col () show
+
+% Edges.
+% Font used for selects, guards, syncs and assigns.
+/Helvetica findfont 14 scalefont setfont
+newpath edge-lw setlinewidth
+   trans-col
+   -1335.496337890625 961.3704223632812  moveto
+   -1353.7530495244557 984.1913119055697 lineto
+   -1360.0 992.0 -1360.0 992.0 -1370.0 992.0 curveto   -1606.0 992.0 lineto
+   -1616.0 992.0 -1616.0 992.0 -1616.0 982.0 curveto   -1616.0 522.0 lineto
+   -1616.0 512.0 -1616.0 512.0 -1606.0 512.0 curveto   -890.0 512.0 lineto
+   -880.0 512.0 -880.0 512.0 -880.0 522.0 curveto   -880.0 726.0 lineto
+   -880.0 736.0 -880.0 736.0 -889.4449677859063 739.2852067702341 curveto   -1051.7215576171875 795.729248046875  lineto
+stroke
+newpath edge-lw setlinewidth
+   trans-col
+   -1043.44873046875 790.1114501953125   moveto
+   -1051.7215576171875 795.729248046875   lineto
+   -1041.7481689453125 795.0005493164062   lineto
+stroke
+   0 -14 moveto select-col () show
+   0 -14 moveto guard-col () show
+   -1592 1010 moveto sync-col (r1_reacting?) show
+   -1592 994 moveto assign-col (c:=0) show
+newpath edge-lw setlinewidth
+   trans-col
+   -1319.972412109375 704.9195556640625  moveto
+   -1262.6896480214727 768.5670591722518 lineto
+   -1256.0 776.0 -1256.0 776.0 -1246.0 776.0 curveto   -1130.0 776.0 lineto
+   -1120.0 776.0 -1120.0 776.0 -1110.808547064945 779.9391868377458 curveto   -1075.9488525390625 794.8790283203125  lineto
+stroke
+newpath edge-lw setlinewidth
+   trans-col
+   -1085.8466796875 793.4530029296875   moveto
+   -1075.9488525390625 794.8790283203125   lineto
+   -1083.8076171875 788.6951293945312   lineto
+stroke
+   0 -14 moveto select-col () show
+   0 -14 moveto guard-col () show
+   -1232 778 moveto sync-col (r2_reacting?) show
+   0 -14 moveto assign-col () show
+newpath edge-lw setlinewidth
+   trans-col
+   -1318.7813720703125 688.3178100585938  moveto
+   -1287.6822127959738 662.4018439966447 lineto
+   -1280.0 656.0 -1280.0 656.0 -1270.0 656.0 curveto   -1114.0 656.0 lineto
+   -1104.0 656.0 -1104.0 656.0 -1104.0 646.0 curveto   -1104.0 570.0 lineto
+   -1104.0 560.0 -1104.0 560.0 -1094.0 560.0 curveto   -954.0 560.0 lineto
+   -944.0 560.0 -944.0 560.0 -944.0 570.0 curveto   -944.0 694.0 lineto
+   -944.0 704.0 -944.0 704.0 -951.8086893643036 710.2469488882023 curveto   -1053.8487548828125 791.8789672851562  lineto
+stroke
+newpath edge-lw setlinewidth
+   trans-col
+   -1047.9229736328125 783.8238525390625   moveto
+   -1053.8487548828125 791.8789672851562   lineto
+   -1044.6893310546875 787.8659057617188   lineto
+stroke
+   0 -14 moveto select-col () show
+   -1096 626 moveto guard-col (c>=tL[r2o][r1o]) show
+   -1096 612 moveto guard-col (&& r2+delta>15) show
+   -1096 594 moveto sync-col (r2_reacting!) show
+   -1096 578 moveto assign-col (r2:=15,) show
+   -1096 564 moveto assign-col (c:=0) show
+newpath edge-lw setlinewidth
+   trans-col
+   -1338.9244384765625 691.0343627929688  moveto
+   -1406.8963359660327 660.1380310724604 lineto
+   -1416.0 656.0 -1416.0 656.0 -1426.0 656.0 curveto   -1574.0 656.0 lineto
+   -1584.0 656.0 -1584.0 656.0 -1584.0 646.0 curveto   -1584.0 554.0 lineto
+   -1584.0 544.0 -1584.0 544.0 -1574.0 544.0 curveto   -922.0 544.0 lineto
+   -912.0 544.0 -912.0 544.0 -912.0 554.0 curveto   -912.0 710.0 lineto
+   -912.0 720.0 -912.0 720.0 -920.8491822238199 724.6574643283262 curveto   -1052.49609375 793.9453125  lineto
+stroke
+newpath edge-lw setlinewidth
+   trans-col
+   -1045.1539306640625 787.1561889648438   moveto
+   -1052.49609375 793.9453125   lineto
+   -1042.7430419921875 791.7368774414062   lineto
+stroke
+   0 -14 moveto select-col () show
+   -1576 626 moveto guard-col (c>=tL[r2o][r1o]) show
+   -1576 612 moveto guard-col (&& r2+delta<0) show
+   -1576 594 moveto sync-col (r2_reacting!) show
+   -1576 578 moveto assign-col (r2:=0,) show
+   -1576 564 moveto assign-col (c:=0) show
+newpath edge-lw setlinewidth
+   trans-col
+   -1319.0311279296875 703.9723510742188  moveto
+   -1263.4740943847537 753.3563629593577 lineto
+   -1256.0 760.0 -1256.0 760.0 -1246.0 760.0 curveto   -1114.0 760.0 lineto
+   -1104.0 760.0 -1104.0 760.0 -1096.9289321881345 767.0710678118655 curveto   -1073.1923828125 790.8076171875  lineto
+stroke
+newpath edge-lw setlinewidth
+   trans-col
+   -1081.8526611328125 785.8076171875   moveto
+   -1073.1923828125 790.8076171875   lineto
+   -1078.1923828125 782.1473388671875   lineto
+stroke
+   0 -14 moveto select-col () show
+   0 -14 moveto guard-col () show
+   -1232 762 moveto sync-col (r1_reacting?) show
+   0 -14 moveto assign-col () show
+newpath edge-lw setlinewidth
+   trans-col
+   -1328.0 684.0  moveto
+   -1328.0 666.0 lineto
+   -1328.0 656.0 -1328.0 656.0 -1338.0 656.0 curveto   -1382.0 656.0 lineto
+   -1392.0 656.0 -1392.0 656.0 -1392.0 646.0 curveto   -1392.0 562.0 lineto
+   -1392.0 552.0 -1392.0 552.0 -1382.0 552.0 curveto   -938.0 552.0 lineto
+   -928.0 552.0 -928.0 552.0 -928.0 562.0 curveto   -928.0 702.0 lineto
+   -928.0 712.0 -928.0 712.0 -936.3957009120593 717.4325138007415 curveto   -1053.0855712890625 792.937744140625  lineto
+stroke
+newpath edge-lw setlinewidth
+   trans-col
+   -1046.3819580078125 785.5173950195312   moveto
+   -1053.0855712890625 792.937744140625   lineto
+   -1043.5699462890625 789.86328125   lineto
+stroke
+   0 -14 moveto select-col () show
+   -1384 634 moveto guard-col (c>=tL[r2o][r1o]) show
+   -1384 620 moveto guard-col (&& r2+delta>=0) show
+   -1384 606 moveto guard-col (&& r2+delta<=15) show
+   -1384 594 moveto sync-col (r2_reacting!) show
+   -1384 578 moveto assign-col (r2:=r2+delta,) show
+   -1384 564 moveto assign-col (c:=0) show
+newpath edge-lw setlinewidth
+   trans-col
+   -1340.0 952.0  moveto
+   -1590.0 952.0 lineto
+   -1600.0 952.0 -1600.0 952.0 -1600.0 942.0 curveto   -1600.0 538.0 lineto
+   -1600.0 528.0 -1600.0 528.0 -1590.0 528.0 curveto   -906.0 528.0 lineto
+   -896.0 528.0 -896.0 528.0 -896.0 538.0 curveto   -896.0 718.0 lineto
+   -896.0 728.0 -896.0 728.0 -905.1914510439706 731.9391912502813 curveto   -1052.0511474609375 794.8790283203125  lineto
+stroke
+newpath edge-lw setlinewidth
+   trans-col
+   -1044.1923828125 788.6951293945312   moveto
+   -1052.0511474609375 794.8790283203125   lineto
+   -1042.1533203125 793.4530029296875   lineto
+stroke
+   0 -14 moveto select-col () show
+   0 -14 moveto guard-col () show
+   -1592 970 moveto sync-col (r2_reacting?) show
+   -1592 954 moveto assign-col (c:=0) show
+newpath edge-lw setlinewidth
+   trans-col
+   -1052.0 800.0  moveto
+   -962.0 800.0 lineto
+   -952.0 800.0 -952.0 800.0 -952.0 810.0 curveto   -952.0 942.0 lineto
+   -952.0 952.0 -952.0 952.0 -962.0 952.0 curveto   -1315.0 952.0  lineto
+stroke
+newpath edge-lw setlinewidth
+   trans-col
+   -1305.3406982421875 949.4118041992188   moveto
+   -1315.0 952.0   lineto
+   -1305.3406982421875 954.5881958007812   lineto
+stroke
+   0 -14 moveto select-col () show
+   -1272 954 moveto guard-col (tL[r2][r1] == INFINITE_TIME) show
+   0 -14 moveto sync-col () show
+   0 -14 moveto assign-col () show
+newpath edge-lw setlinewidth
+   trans-col
+   -1328.0 852.0   moveto
+   -1328.0 939.0   lineto
+stroke
+newpath edge-lw setlinewidth
+   trans-col
+   -1330.588134765625 929.3407592773438   moveto
+   -1328.0 939.0   lineto
+   -1325.411865234375 929.3407592773438   lineto
+stroke
+   0 -14 moveto select-col () show
+   -1408 890 moveto guard-col (tL[r2][r1] == INFINITE_TIME) show
+   0 -14 moveto sync-col () show
+   0 -14 moveto assign-col () show
+newpath edge-lw setlinewidth
+   trans-col
+   -1076.0 800.0  moveto
+   -1262.0 800.0 lineto
+   -1272.0 800.0 -1272.0 800.0 -1276.740995114117 791.1952873228072 curveto   -1321.836669921875 707.4461059570312  lineto
+stroke
+newpath edge-lw setlinewidth
+   trans-col
+   -1314.9783935546875 714.7237548828125   moveto
+   -1321.836669921875 707.4461059570312   lineto
+   -1319.5360107421875 717.1778564453125   lineto
+stroke
+   0 -14 moveto select-col () show
+   -1272 834 moveto guard-col (tU[r2][r1] != INFINITE_TIME) show
+   -1272 820 moveto guard-col (&& c>tU[r2][r1]) show
+   0 -14 moveto sync-col () show
+   -1272 802 moveto assign-col (c:=tU[r2][r1], r1o:=r1, r2o:=r2) show
+newpath edge-lw setlinewidth
+   trans-col
+   -1064.0 788.0  moveto
+   -1064.0 770.0 lineto
+   -1064.0 760.0 -1064.0 760.0 -1056.9289321881345 752.9289321881346 curveto   -1055.0710678118655 751.0710678118654 lineto
+   -1048.0 744.0 -1048.0 744.0 -1048.0 734.0 curveto   -1048.0 682.0 lineto
+   -1048.0 672.0 -1048.0 672.0 -1058.0 672.0 curveto   -1262.0 672.0 lineto
+   -1272.0 672.0 -1272.0 672.0 -1281.191452935055 675.9391868377458 curveto   -1316.0511474609375 690.8790283203125  lineto
+stroke
+newpath edge-lw setlinewidth
+   trans-col
+   -1308.1923828125 684.6951293945312   moveto
+   -1316.0511474609375 690.8790283203125   lineto
+   -1306.1533203125 689.4530029296875   lineto
+stroke
+   0 -14 moveto select-col () show
+   -1256 730 moveto guard-col (\(tU[r2][r1] == INFINITE_TIME) show
+   -1256 716 moveto guard-col (&& tL[r2][r1] != INFINITE_TIME\)) show
+   -1256 702 moveto guard-col (|| \(tU[r2][r1] != INFINITE_TIME) show
+   -1256 688 moveto guard-col (&& c<=tU[r2][r1]\)) show
+   0 -14 moveto sync-col () show
+   -1256 674 moveto assign-col (r1o:=r1, r2o:=r2) show
+newpath edge-lw setlinewidth
+   trans-col
+   -1328.0 828.0   moveto
+   -1328.0 709.0   lineto
+stroke
+newpath edge-lw setlinewidth
+   trans-col
+   -1325.411865234375 718.6592407226562   moveto
+   -1328.0 709.0   lineto
+   -1330.588134765625 718.6592407226562   lineto
+stroke
+   0 -14 moveto select-col () show
+   -1512 802 moveto guard-col (tL[r2][r1] != INFINITE_TIME) show
+   0 -14 moveto sync-col () show
+   -1384 786 moveto assign-col (r1o:=r1,) show
+   -1384 772 moveto assign-col (r2o:=r2,) show
+   -1384 758 moveto assign-col (c:=0) show
+%%EOF

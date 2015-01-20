@@ -1,0 +1,131 @@
+\begin{thebibliography}{10}
+
+\bibitem{kegg}
+Kanehisa, M., Goto, S.:
+\newblock {KEGG: Kyoto Encyclopedia of Genes and Genomes}.
+\newblock Nucleic Acids Research \textbf{28}(1) (January 2000)  27--30
+
+\bibitem{phosphosite}
+Hornbeck, P.V., Chabra, I., Kornhauser, J.M., Skrzypek, E., Zhang, B.:
+\newblock {PhosphoSite}: A bioinformatics resource dedicated to physiological
+  protein phosphorylation.
+\newblock Proteomics \textbf{4}(6) (2004)  1551--1561
+
+\bibitem{bio-pepa}
+Ciocchetta, F., Hillston, J.:
+\newblock {Bio-PEPA: A framework for the modelling and analysis of biological
+  systems}.
+\newblock Theor. Comput. Sci. \textbf{410} (August 2009)  3065--3084
+
+\bibitem{blenx}
+Dematt\'{e}, L., Priami, C., Romanel, A.:
+\newblock {Modelling and simulation of biological processes in BlenX}.
+\newblock SIGMETRICS Perform. Eval. Rev. \textbf{35} (March 2008)  32--39
+
+\bibitem{copasi}
+Mendes, P., Hoops, S., Sahle, S., Gauges, R., Dada, J., Kummer, U.:
+\newblock {Computational modeling of biochemical networks using COPASI systems
+  biology}.
+\newblock Volume 500 of Methods in Molecular Biology.
+\newblock Humana Press, Totowa, NJ (2009)  17--59
+
+\bibitem{e-cell}
+Tomita, M., Hashimoto, K., Takahashi, K., Shimizu, T.S., Matsuzaki, Y.,
+  Miyoshi, F., Saito, K., Tanida, S., Yugi, K., Venter, J.C., III, C.A.H.:
+\newblock {E-CELL: software environment for whole-cell simulation.}
+\newblock Bioinformatics \textbf{15}(1) (January 1999)  72--84
+
+\bibitem{gna}
+de~Jong, H., Geiselmann, J., Hernandez, C., Page, M.:
+\newblock {Genetic Network Analyzer: qualitative simulation of genetic
+  regulatory networks}.
+\newblock Bioinformatics \textbf{19}(3) (February 2003)  336--344
+
+\bibitem{animo-site}
+ANIMO.
+\newblock \url{http://fmt.cs.utwente.nl/tools/animo}
+
+\bibitem{animo-ieee}
+Schivo, S., Scholma, J., Wanders, B., Camacho, R.A.U., van~der Vet, P.E.,
+  Karperien, M., Langerak, R., van~de Pol, J., Post, J.N.:
+\newblock Modelling biological pathway dynamics with {Timed Automata}.
+\newblock IEEE Journal of Biomedical and Health Informatics \textbf{18}(3)
+  (2013)  832--839
+
+\bibitem{animo-gene}
+Scholma, J., Schivo, S., Camacho, R.A.U., van~de Pol, J., Karperien, M., Post,
+  J.N.:
+\newblock Biological networks 101: Computational modeling for molecular
+  biologists.
+\newblock Gene \textbf{533}(1) (2014)  379--384
+
+\bibitem{timed-automata-alur}
+Alur, R., Dill, D.L.:
+\newblock A theory of timed automata.
+\newblock Theor. Comput. Sci. \textbf{126} (April 1994)  183--235
+
+\bibitem{cytoscape}
+Killcoyne, S., Carter, G.W., Smith, J., Boyle, J.:
+\newblock {Cytoscape: a community-based framework for network modeling.}
+\newblock Methods in molecular biology (Clifton, N.J.) \textbf{563} (2009)
+  219--239
+
+\bibitem{uppaal}
+Larsen, K.G., Pettersson, P., Yi, W.:
+\newblock {UPPAAL} in a nutshell.
+\newblock International Journal on Software Tools for Technology Transfer
+  (STTT) \textbf{1} (1997)  134--152
+
+\bibitem{egf-ngf}
+Santos, S.D.M., Verveer, P.J., Bastiaens, P.I.H.:
+\newblock {Growth factor-induced MAPK network topology shapes Erk response
+  determining PC-12 cell fate}.
+\newblock Nature Cell Biology \textbf{9}(3) (February 2007)  324--330
+
+\bibitem{animo-syncop}
+{Schivo}, S., {Scholma}, J., {Karperien}, H.B.J., {Post}, J.N., {van de Pol},
+  J.C., {Langerak}, R.:
+\newblock Setting parameters for biological models with {ANIMO}.
+\newblock In {Andr{\'e}}, E., {Frehse}, G., eds.: Proceedings 1st International
+  Workshop on Synthesis of Continuous Parameters, Grenoble, France. Volume 145
+  of Electronic Proceedings in Theoretical Computer Science., Open Publishing
+  Association (April 2014)  35--47
+
+\bibitem{ode-ma-anche-altro}
+Daigle, B.J., Srinivasan, B.S., Flannick, J.A., Novak, A.F., Batzoglou, S.:
+\newblock Current progress in static and dynamic modeling of biological
+  networks.
+\newblock In Choi, S., ed.: Systems Biology for Signaling Networks. Volume~1 of
+  Systems Biology.
+\newblock Springer New York (2010)  13--73
+
+\bibitem{uppaal-smc}
+David, A., Larsen, K., Legay, A., Miku\v{c}ionis, M., Wang, Z.:
+\newblock Time for statistical model checking of real-time systems.
+\newblock In Gopalakrishnan, G., Qadeer, S., eds.: Computer Aided Verification.
+  Volume 6806 of Lecture Notes in Computer Science.
+\newblock Springer Berlin / Heidelberg (2011)  349--355
+
+\bibitem{hidde-templates}
+Monteiro, P.T., Ropers, D., Mateescu, R., Freitas, A.T., de~Jong, H.:
+\newblock Temporal logic patterns for querying dynamic models of cellular
+  interaction networks.
+\newblock Bioinformatics \textbf{24}(16) (2008)  i227--i233
+
+\bibitem{test-based-modelling}
+Tretmans, J.:
+\newblock Model-based testing and some steps towards test-based modelling.
+\newblock In Bernardo, M., Issarny, V., eds.: Formal Methods for Eternal
+  Networked Software Systems. Volume 6659 of Lecture Notes in Computer Science.
+\newblock Springer Berlin / Heidelberg (2011)  297--326
+
+\bibitem{uppaal-multi-core1}
+{Dalsgaard}, A.E., {Laarman}, A.W., {Larsen}, K.G., {Olesen}, M.C., {van de
+  Pol}, J.C.:
+\newblock Multi-core reachability for timed automata.
+\newblock In {Jurdzinski}, M., {Nickovic}, D., eds.: 10th International
+  Conference on Formal Modeling and Analysis of Timed Systems, FORMATS 2012,
+  London, UK. Volume 7595 of Lecture Notes in Computer Science., London,
+  Springer Verlag (September 2012)  91--106
+
+\end{thebibliography}

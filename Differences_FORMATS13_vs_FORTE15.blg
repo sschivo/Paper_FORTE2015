@@ -1,0 +1,49 @@
+This is BibTeX, Version 0.99d (TeX Live 2013/Debian)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+The top-level auxiliary file: Differences_FORMATS13_vs_FORTE15.aux
+The style file: splncs.bst
+Database file #1: Paper_FORTE15.bib
+Warning--empty booktitle in copasi
+Warning--empty title in animo-site
+You've used 22 entries,
+            2087 wiz_defined-function locations,
+            652 strings with 8842 characters,
+and the built_in function-call counts, 8563 in all, are:
+= -- 845
+> -- 375
+< -- 27
++ -- 130
+- -- 108
+* -- 685
+:= -- 1153
+add.period$ -- 37
+call.type$ -- 22
+change.case$ -- 21
+chr.to.int$ -- 0
+cite$ -- 24
+duplicate$ -- 425
+empty$ -- 717
+format.name$ -- 108
+if$ -- 2044
+int.to.chr$ -- 0
+int.to.str$ -- 22
+missing$ -- 21
+newline$ -- 116
+num.names$ -- 32
+pop$ -- 55
+preamble$ -- 1
+purify$ -- 0
+quote$ -- 0
+skip$ -- 313
+stack$ -- 0
+substring$ -- 618
+swap$ -- 254
+text.length$ -- 27
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 0
+warning$ -- 2
+while$ -- 85
+width$ -- 24
+write$ -- 272
+(There were 2 warnings)

@@ -1,0 +1,636 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE nta PUBLIC '-//Uppaal Team//DTD Flat System 1.1//EN' 'http://www.it.uu.se/research/group/darts/uppaal/flat-1_1.dtd'>
+<nta>
+	<declaration>
+// Place global declarations here.
+clock globalTime;
+const int INFINITE_TIME = -1;
+const int N_REACTANTS = 4;
+broadcast chan reacting[N_REACTANTS];
+
+//R2 = B
+int R2 := 15;
+
+//R3 = A
+int R3 := 0;
+
+//R1 = C
+int R1 := 15;
+
+//R0 = D
+int R0 := 15;
+
+int A, B, C, D;
+int INFINITY;
+int tL[1], tU[1];</declaration>
+	<template>
+		<name x="5" y="5">Reaction_B_A</name>
+		<parameter>int &amp;reactant1, int &amp;reactant2, int &amp;output, const int timeL[15+1], const int timeU[15+1], const int delta, broadcast chan &amp;r1_reacting, broadcast chan &amp;r2_reacting, broadcast chan &amp;output_reacting</parameter>
+		<declaration>// Place local declarations here.
+clock c;
+int r1, r2;
+int[-1, 1073741822] T;</declaration>
+		<location id="id0" x="-1384" y="-664">
+			<name x="-1440" y="-656">stubborn</name>
+			<committed/>
+		</location>
+		<location id="id1" x="-1384" y="-952">
+			<name x="-1392" y="-984">not_reacting</name>
+		</location>
+		<location id="id2" x="-1096" y="-816">
+			<name x="-1088" y="-840">updating</name>
+			<committed/>
+		</location>
+		<location id="id3" x="-1384" y="-768">
+			<name x="-1440" y="-792">waiting</name>
+			<label kind="invariant" x="-1448" y="-760">c&lt;=tU[B]</label>
+		</location>
+		<location id="id4" x="-1384" y="-872">
+			<name x="-1424" y="-896">start</name>
+			<committed/>
+		</location>
+		<init ref="id4"/>
+		<transition>
+			<source ref="id0"/>
+			<target ref="id2"/>
+			<label kind="guard" x="-1344" y="-640">c&lt;tL[B]</label>
+			<nail x="-1384" y="-624"/>
+			<nail x="-1064" y="-624"/>
+			<nail x="-1064" y="-776"/>
+		</transition>
+		<transition>
+			<source ref="id0"/>
+			<target ref="id3"/>
+			<label kind="guard" x="-1472" y="-680">c&gt;=tL[B]</label>
+			<nail x="-1480" y="-664"/>
+			<nail x="-1480" y="-768"/>
+		</transition>
+		<transition>
+			<source ref="id3"/>
+			<target ref="id0"/>
+			<label kind="synchronisation" x="-1456" y="-720">reacting[1]?</label>
+		</transition>
+		<transition>
+			<source ref="id1"/>
+			<target ref="id2"/>
+			<label kind="synchronisation" x="-1512" y="-992">reacting[1]?</label>
+			<label kind="assignment" x="-1512" y="-976">c:=0</label>
+			<nail x="-1416" y="-976"/>
+			<nail x="-1528" y="-976"/>
+			<nail x="-1528" y="-616"/>
+			<nail x="-1056" y="-616"/>
+			<nail x="-1056" y="-792"/>
+		</transition>
+		<transition>
+			<source ref="id3"/>
+			<target ref="id2"/>
+			<label kind="guard" x="-1328" y="-720">c&gt;=tL[B] &amp;&amp; A+1&lt;=15</label>
+			<label kind="synchronisation" x="-1328" y="-704">reacting[0]!</label>
+			<label kind="assignment" x="-1328" y="-688">A:=A+1, c:=0</label>
+			<nail x="-1336" y="-704"/>
+			<nail x="-1072" y="-704"/>
+			<nail x="-1072" y="-768"/>
+		</transition>
+		<transition>
+			<source ref="id2"/>
+			<target ref="id1"/>
+			<label kind="guard" x="-1296" y="-968">A == 15 || tL[B] == INFINITY</label>
+			<nail x="-1096" y="-952"/>
+		</transition>
+		<transition>
+			<source ref="id4"/>
+			<target ref="id1"/>
+			<label kind="guard" x="-1432" y="-928">tL[B] == INFINITY</label>
+		</transition>
+		<transition>
+			<source ref="id2"/>
+			<target ref="id3"/>
+			<label kind="guard" x="-1328" y="-848">A &lt; 15 &amp;&amp; tU[B] != INFINITY
+&amp;&amp; c&gt;tU[B]</label>
+			<label kind="assignment" x="-1328" y="-816">c:=tU[B]</label>
+			<nail x="-1336" y="-816"/>
+		</transition>
+		<transition>
+			<source ref="id2"/>
+			<target ref="id3"/>
+			<label kind="guard" x="-1328" y="-784">A &lt; 15 &amp;&amp; tU[B] != INFINITY
+&amp;&amp; c&lt;=tU[B]</label>
+			<nail x="-1096" y="-752"/>
+			<nail x="-1336" y="-752"/>
+		</transition>
+		<transition>
+			<source ref="id4"/>
+			<target ref="id3"/>
+			<label kind="guard" x="-1496" y="-856">tL[B] != INFINITY</label>
+			<label kind="assignment" x="-1424" y="-840">c := 0</label>
+		</transition>
+	</template>
+	<template>
+		<name x="5" y="5">Reaction_C_A</name>
+		<parameter>int &amp;reactant1, int &amp;reactant2, int &amp;output, const int timeL[15+1], const int timeU[15+1], const int delta, broadcast chan &amp;r1_reacting, broadcast chan &amp;r2_reacting, broadcast chan &amp;output_reacting</parameter>
+		<declaration>// Place local declarations here.
+clock c;
+int r1, r2;
+int[-1, 1073741822] T;</declaration>
+		<location id="id5" x="-1384" y="-664">
+			<name x="-1440" y="-656">stubborn</name>
+			<committed/>
+		</location>
+		<location id="id6" x="-1384" y="-952">
+			<name x="-1392" y="-984">not_reacting</name>
+		</location>
+		<location id="id7" x="-1096" y="-816">
+			<name x="-1088" y="-840">updating</name>
+			<committed/>
+		</location>
+		<location id="id8" x="-1384" y="-768">
+			<name x="-1440" y="-792">waiting</name>
+			<label kind="invariant" x="-1448" y="-760">c&lt;=tU[C]</label>
+		</location>
+		<location id="id9" x="-1384" y="-872">
+			<name x="-1424" y="-896">start</name>
+			<committed/>
+		</location>
+		<init ref="id9"/>
+		<transition>
+			<source ref="id5"/>
+			<target ref="id7"/>
+			<label kind="guard" x="-1344" y="-640">c&lt;tL[C]</label>
+			<nail x="-1384" y="-624"/>
+			<nail x="-1064" y="-624"/>
+			<nail x="-1064" y="-776"/>
+		</transition>
+		<transition>
+			<source ref="id5"/>
+			<target ref="id8"/>
+			<label kind="guard" x="-1472" y="-680">c&gt;=tL[C]</label>
+			<nail x="-1480" y="-664"/>
+			<nail x="-1480" y="-768"/>
+		</transition>
+		<transition>
+			<source ref="id8"/>
+			<target ref="id5"/>
+			<label kind="synchronisation" x="-1456" y="-720">reacting[2]?</label>
+		</transition>
+		<transition>
+			<source ref="id6"/>
+			<target ref="id7"/>
+			<label kind="synchronisation" x="-1512" y="-992">reacting[2]?</label>
+			<label kind="assignment" x="-1512" y="-976">c:=0</label>
+			<nail x="-1416" y="-976"/>
+			<nail x="-1528" y="-976"/>
+			<nail x="-1528" y="-616"/>
+			<nail x="-1056" y="-616"/>
+			<nail x="-1056" y="-792"/>
+		</transition>
+		<transition>
+			<source ref="id8"/>
+			<target ref="id7"/>
+			<label kind="guard" x="-1328" y="-720">c&gt;=tL[C] &amp;&amp; A+1&lt;=15</label>
+			<label kind="synchronisation" x="-1328" y="-704">reacting[0]!</label>
+			<label kind="assignment" x="-1328" y="-688">A:=A+1, c:=0</label>
+			<nail x="-1336" y="-704"/>
+			<nail x="-1072" y="-704"/>
+			<nail x="-1072" y="-768"/>
+		</transition>
+		<transition>
+			<source ref="id7"/>
+			<target ref="id6"/>
+			<label kind="guard" x="-1296" y="-968">A == 15 || tL[C] == INFINITY</label>
+			<nail x="-1096" y="-952"/>
+		</transition>
+		<transition>
+			<source ref="id9"/>
+			<target ref="id6"/>
+			<label kind="guard" x="-1432" y="-928">tL[C] == INFINITY</label>
+		</transition>
+		<transition>
+			<source ref="id7"/>
+			<target ref="id8"/>
+			<label kind="guard" x="-1328" y="-848">A &lt; 15 &amp;&amp; tU[C] != INFINITY
+&amp;&amp; c&gt;tU[C]</label>
+			<label kind="assignment" x="-1328" y="-816">c:=tU[C]</label>
+			<nail x="-1336" y="-816"/>
+		</transition>
+		<transition>
+			<source ref="id7"/>
+			<target ref="id8"/>
+			<label kind="guard" x="-1328" y="-784">A &lt; 15 &amp;&amp; tU[C] != INFINITY
+&amp;&amp; c&lt;=tU[C]</label>
+			<nail x="-1096" y="-752"/>
+			<nail x="-1336" y="-752"/>
+		</transition>
+		<transition>
+			<source ref="id9"/>
+			<target ref="id8"/>
+			<label kind="guard" x="-1496" y="-856">tL[C] != INFINITY</label>
+			<label kind="assignment" x="-1424" y="-840">c := 0</label>
+		</transition>
+	</template>
+	<template>
+		<name x="5" y="5">Reaction_D_A</name>
+		<parameter>int &amp;reactant1, int &amp;reactant2, int &amp;output, const int timeL[15+1], const int timeU[15+1], const int delta, broadcast chan &amp;r1_reacting, broadcast chan &amp;r2_reacting, broadcast chan &amp;output_reacting</parameter>
+		<declaration>// Place local declarations here.
+clock c;
+int r1, r2;
+int[-1, 1073741822] T;</declaration>
+		<location id="id10" x="-1384" y="-664">
+			<name x="-1440" y="-656">stubborn</name>
+			<committed/>
+		</location>
+		<location id="id11" x="-1384" y="-952">
+			<name x="-1392" y="-984">not_reacting</name>
+		</location>
+		<location id="id12" x="-1096" y="-816">
+			<name x="-1088" y="-840">updating</name>
+			<committed/>
+		</location>
+		<location id="id13" x="-1384" y="-768">
+			<name x="-1440" y="-792">waiting</name>
+			<label kind="invariant" x="-1448" y="-760">c&lt;=tU[D]</label>
+		</location>
+		<location id="id14" x="-1384" y="-872">
+			<name x="-1424" y="-896">start</name>
+			<committed/>
+		</location>
+		<init ref="id14"/>
+		<transition>
+			<source ref="id10"/>
+			<target ref="id12"/>
+			<label kind="guard" x="-1344" y="-640">c&lt;tL[D]</label>
+			<nail x="-1384" y="-624"/>
+			<nail x="-1064" y="-624"/>
+			<nail x="-1064" y="-776"/>
+		</transition>
+		<transition>
+			<source ref="id10"/>
+			<target ref="id13"/>
+			<label kind="guard" x="-1472" y="-680">c&gt;=tL[D]</label>
+			<nail x="-1480" y="-664"/>
+			<nail x="-1480" y="-768"/>
+		</transition>
+		<transition>
+			<source ref="id13"/>
+			<target ref="id10"/>
+			<label kind="synchronisation" x="-1456" y="-720">reacting[3]?</label>
+		</transition>
+		<transition>
+			<source ref="id11"/>
+			<target ref="id12"/>
+			<label kind="synchronisation" x="-1512" y="-992">reacting[3]?</label>
+			<label kind="assignment" x="-1512" y="-976">c:=0</label>
+			<nail x="-1416" y="-976"/>
+			<nail x="-1528" y="-976"/>
+			<nail x="-1528" y="-616"/>
+			<nail x="-1056" y="-616"/>
+			<nail x="-1056" y="-792"/>
+		</transition>
+		<transition>
+			<source ref="id13"/>
+			<target ref="id12"/>
+			<label kind="guard" x="-1328" y="-720">c&gt;=tL[D] &amp;&amp; A-1&gt;=0</label>
+			<label kind="synchronisation" x="-1328" y="-704">reacting[0]!</label>
+			<label kind="assignment" x="-1328" y="-688">A:=A-1, c:=0</label>
+			<nail x="-1336" y="-704"/>
+			<nail x="-1072" y="-704"/>
+			<nail x="-1072" y="-768"/>
+		</transition>
+		<transition>
+			<source ref="id12"/>
+			<target ref="id11"/>
+			<label kind="guard" x="-1288" y="-968">A == 0 || tL[D] == INFINITY</label>
+			<nail x="-1096" y="-952"/>
+		</transition>
+		<transition>
+			<source ref="id14"/>
+			<target ref="id11"/>
+			<label kind="guard" x="-1432" y="-928">tL[D] == INFINITY</label>
+		</transition>
+		<transition>
+			<source ref="id12"/>
+			<target ref="id13"/>
+			<label kind="guard" x="-1328" y="-848">A &gt; 0 &amp;&amp; tU[D] != INFINITY
+&amp;&amp; c&gt;tU[D]</label>
+			<label kind="assignment" x="-1328" y="-816">c:=tU[D]</label>
+			<nail x="-1336" y="-816"/>
+		</transition>
+		<transition>
+			<source ref="id12"/>
+			<target ref="id13"/>
+			<label kind="guard" x="-1328" y="-784">A &gt; 0 &amp;&amp; tU[D] != INFINITY
+&amp;&amp; c&lt;=tU[D]</label>
+			<nail x="-1096" y="-752"/>
+			<nail x="-1336" y="-752"/>
+		</transition>
+		<transition>
+			<source ref="id14"/>
+			<target ref="id13"/>
+			<label kind="guard" x="-1496" y="-856">tL[D] != INFINITY</label>
+			<label kind="assignment" x="-1424" y="-840">c := 0</label>
+		</transition>
+	</template>
+	<template>
+		<name x="5" y="5">Reaction_R1_R3</name>
+		<parameter>int &amp;reactant1, int &amp;reactant2, int &amp;output, const int timeL[15+1], const int timeU[15+1], const int delta, broadcast chan &amp;r1_reacting, broadcast chan &amp;r2_reacting, broadcast chan &amp;output_reacting</parameter>
+		<declaration>// Place local declarations here.
+clock c;
+int r1, r2;
+int[-1, 1073741822] T;</declaration>
+		<location id="id15" x="-1512" y="-696">
+			<name x="-1584" y="-688">stubborn</name>
+			<committed/>
+		</location>
+		<location id="id16" x="-1384" y="-976">
+			<name x="-1392" y="-1008">not_reacting</name>
+		</location>
+		<location id="id17" x="-960" y="-856">
+			<name x="-952" y="-880">resetting</name>
+			<committed/>
+		</location>
+		<location id="id18" x="-1384" y="-768">
+			<name x="-1416" y="-808">reacting</name>
+			<label kind="invariant" x="-1624" y="-792">timeU[r1] == INFINITE_TIME
+|| c&lt;=timeU[r1]</label>
+		</location>
+		<location id="id19" x="-1384" y="-896">
+			<name x="-1424" y="-920">start</name>
+			<committed/>
+		</location>
+		<location id="id20" x="-1248" y="-624">
+			<name x="-1360" y="-616">about_to_react</name>
+		</location>
+		<init ref="id19"/>
+		<transition>
+			<source ref="id15"/>
+			<target ref="id17"/>
+			<label kind="guard" x="-1624" y="-656">c&lt;timeL[r1]</label>
+			<nail x="-1512" y="-592"/>
+			<nail x="-928" y="-592"/>
+			<nail x="-928" y="-776"/>
+		</transition>
+		<transition>
+			<source ref="id15"/>
+			<target ref="id18"/>
+			<label kind="guard" x="-1632" y="-728">c&gt;=timeL[r1]</label>
+			<nail x="-1512" y="-744"/>
+		</transition>
+		<transition>
+			<source ref="id18"/>
+			<target ref="id15"/>
+			<label kind="synchronisation" x="-1496" y="-736">r1_reacting?</label>
+			<nail x="-1408" y="-720"/>
+			<nail x="-1488" y="-720"/>
+		</transition>
+		<transition>
+			<source ref="id20"/>
+			<target ref="id18"/>
+			<label kind="synchronisation" x="-1272" y="-672">output_reacting?</label>
+			<label kind="assignment" x="-1272" y="-656">c := timeU[r1]</label>
+			<nail x="-1144" y="-624"/>
+			<nail x="-1144" y="-680"/>
+			<nail x="-1344" y="-680"/>
+		</transition>
+		<transition>
+			<source ref="id16"/>
+			<target ref="id17"/>
+			<label kind="synchronisation" x="-1640" y="-1016">r1_reacting?</label>
+			<label kind="assignment" x="-1536" y="-1016">c:=0</label>
+			<nail x="-1416" y="-1000"/>
+			<nail x="-1672" y="-1000"/>
+			<nail x="-1672" y="-576"/>
+			<nail x="-912" y="-576"/>
+			<nail x="-912" y="-792"/>
+		</transition>
+		<transition>
+			<source ref="id18"/>
+			<target ref="id20"/>
+			<label kind="guard" x="-1448" y="-672">c&gt;=timeL[r1]
+&amp;&amp; (output+delta&gt;15
+|| output+delta&lt;0)</label>
+			<nail x="-1384" y="-680"/>
+			<nail x="-1456" y="-680"/>
+			<nail x="-1456" y="-624"/>
+		</transition>
+		<transition>
+			<source ref="id18"/>
+			<target ref="id17"/>
+			<label kind="guard" x="-1128" y="-736">c&gt;=timeL[r1]
+&amp;&amp; output+delta&gt;=0
+&amp;&amp; output+delta&lt;=15</label>
+			<label kind="synchronisation" x="-1128" y="-696">output_reacting!</label>
+			<label kind="assignment" x="-1128" y="-680">output:=output+delta,
+c:=0</label>
+			<nail x="-1320" y="-696"/>
+			<nail x="-936" y="-696"/>
+			<nail x="-936" y="-768"/>
+		</transition>
+		<transition>
+			<source ref="id17"/>
+			<target ref="id16"/>
+			<label kind="guard" x="-1328" y="-992">timeL[reactant1] == INFINITE_TIME</label>
+			<nail x="-960" y="-976"/>
+		</transition>
+		<transition>
+			<source ref="id19"/>
+			<target ref="id16"/>
+			<label kind="guard" x="-1536" y="-952">timeL[reactant1] == INFINITE_TIME</label>
+		</transition>
+		<transition>
+			<source ref="id17"/>
+			<target ref="id18"/>
+			<label kind="guard" x="-1320" y="-896">timeU[reactant1] != INFINITE_TIME
+&amp;&amp; c&gt;timeU[reactant1]</label>
+			<label kind="assignment" x="-1320" y="-872">c:=timeU[reactant1],
+r1:=reactant1,T:=timeL[r1]</label>
+			<nail x="-1328" y="-856"/>
+		</transition>
+		<transition>
+			<source ref="id17"/>
+			<target ref="id18"/>
+			<label kind="guard" x="-1320" y="-824">(timeU[reactant1] == INFINITE_TIME
+&amp;&amp; timeL[reactant1] != INFINITE_TIME)
+|| (timeU[reactant1] != INFINITE_TIME
+&amp;&amp; c&lt;=timeU[reactant1])</label>
+			<label kind="assignment" x="-1320" y="-768">r1:=reactant1,T:=timeL[r1]</label>
+			<nail x="-960" y="-752"/>
+			<nail x="-1328" y="-752"/>
+		</transition>
+		<transition>
+			<source ref="id19"/>
+			<target ref="id18"/>
+			<label kind="guard" x="-1584" y="-880">timeL[reactant1]
+   != INFINITE_TIME</label>
+			<label kind="assignment" x="-1504" y="-848">r1 := reactant1,
+T := timeL[r1],
+c := 0</label>
+		</transition>
+	</template>
+	<template>
+		<name x="5" y="5">Reaction_R0_R3</name>
+		<parameter>int &amp;reactant1, int &amp;reactant2, int &amp;output, const int timeL[15+1], const int timeU[15+1], const int delta, broadcast chan &amp;r1_reacting, broadcast chan &amp;r2_reacting, broadcast chan &amp;output_reacting</parameter>
+		<declaration>// Place local declarations here.
+clock c;
+int r1, r2;
+int[-1, 1073741822] T;</declaration>
+		<location id="id21" x="-1512" y="-696">
+			<name x="-1584" y="-688">stubborn</name>
+			<committed/>
+		</location>
+		<location id="id22" x="-1384" y="-976">
+			<name x="-1392" y="-1008">not_reacting</name>
+		</location>
+		<location id="id23" x="-960" y="-856">
+			<name x="-952" y="-880">resetting</name>
+			<committed/>
+		</location>
+		<location id="id24" x="-1384" y="-768">
+			<name x="-1416" y="-808">reacting</name>
+			<label kind="invariant" x="-1624" y="-792">timeU[r1] == INFINITE_TIME
+|| c&lt;=timeU[r1]</label>
+		</location>
+		<location id="id25" x="-1384" y="-896">
+			<name x="-1424" y="-920">start</name>
+			<committed/>
+		</location>
+		<location id="id26" x="-1248" y="-624">
+			<name x="-1360" y="-616">about_to_react</name>
+		</location>
+		<init ref="id25"/>
+		<transition>
+			<source ref="id21"/>
+			<target ref="id23"/>
+			<label kind="guard" x="-1624" y="-656">c&lt;timeL[r1]</label>
+			<nail x="-1512" y="-592"/>
+			<nail x="-928" y="-592"/>
+			<nail x="-928" y="-776"/>
+		</transition>
+		<transition>
+			<source ref="id21"/>
+			<target ref="id24"/>
+			<label kind="guard" x="-1632" y="-728">c&gt;=timeL[r1]</label>
+			<nail x="-1512" y="-744"/>
+		</transition>
+		<transition>
+			<source ref="id24"/>
+			<target ref="id21"/>
+			<label kind="synchronisation" x="-1496" y="-736">r1_reacting?</label>
+			<nail x="-1408" y="-720"/>
+			<nail x="-1488" y="-720"/>
+		</transition>
+		<transition>
+			<source ref="id26"/>
+			<target ref="id24"/>
+			<label kind="synchronisation" x="-1272" y="-672">output_reacting?</label>
+			<label kind="assignment" x="-1272" y="-656">c := timeU[r1]</label>
+			<nail x="-1144" y="-624"/>
+			<nail x="-1144" y="-680"/>
+			<nail x="-1344" y="-680"/>
+		</transition>
+		<transition>
+			<source ref="id22"/>
+			<target ref="id23"/>
+			<label kind="synchronisation" x="-1640" y="-1016">r1_reacting?</label>
+			<label kind="assignment" x="-1536" y="-1016">c:=0</label>
+			<nail x="-1416" y="-1000"/>
+			<nail x="-1672" y="-1000"/>
+			<nail x="-1672" y="-576"/>
+			<nail x="-912" y="-576"/>
+			<nail x="-912" y="-792"/>
+		</transition>
+		<transition>
+			<source ref="id24"/>
+			<target ref="id26"/>
+			<label kind="guard" x="-1448" y="-672">c&gt;=timeL[r1]
+&amp;&amp; (output+delta&gt;15
+|| output+delta&lt;0)</label>
+			<nail x="-1384" y="-680"/>
+			<nail x="-1456" y="-680"/>
+			<nail x="-1456" y="-624"/>
+		</transition>
+		<transition>
+			<source ref="id24"/>
+			<target ref="id23"/>
+			<label kind="guard" x="-1128" y="-736">c&gt;=timeL[r1]
+&amp;&amp; output+delta&gt;=0
+&amp;&amp; output+delta&lt;=15</label>
+			<label kind="synchronisation" x="-1128" y="-696">output_reacting!</label>
+			<label kind="assignment" x="-1128" y="-680">output:=output+delta,
+c:=0</label>
+			<nail x="-1320" y="-696"/>
+			<nail x="-936" y="-696"/>
+			<nail x="-936" y="-768"/>
+		</transition>
+		<transition>
+			<source ref="id23"/>
+			<target ref="id22"/>
+			<label kind="guard" x="-1328" y="-992">timeL[reactant1] == INFINITE_TIME</label>
+			<nail x="-960" y="-976"/>
+		</transition>
+		<transition>
+			<source ref="id25"/>
+			<target ref="id22"/>
+			<label kind="guard" x="-1536" y="-952">timeL[reactant1] == INFINITE_TIME</label>
+		</transition>
+		<transition>
+			<source ref="id23"/>
+			<target ref="id24"/>
+			<label kind="guard" x="-1320" y="-896">timeU[reactant1] != INFINITE_TIME
+&amp;&amp; c&gt;timeU[reactant1]</label>
+			<label kind="assignment" x="-1320" y="-872">c:=timeU[reactant1],
+r1:=reactant1,T:=timeL[r1]</label>
+			<nail x="-1328" y="-856"/>
+		</transition>
+		<transition>
+			<source ref="id23"/>
+			<target ref="id24"/>
+			<label kind="guard" x="-1320" y="-824">(timeU[reactant1] == INFINITE_TIME
+&amp;&amp; timeL[reactant1] != INFINITE_TIME)
+|| (timeU[reactant1] != INFINITE_TIME
+&amp;&amp; c&lt;=timeU[reactant1])</label>
+			<label kind="assignment" x="-1320" y="-768">r1:=reactant1,T:=timeL[r1]</label>
+			<nail x="-960" y="-752"/>
+			<nail x="-1328" y="-752"/>
+		</transition>
+		<transition>
+			<source ref="id25"/>
+			<target ref="id24"/>
+			<label kind="guard" x="-1584" y="-880">timeL[reactant1]
+   != INFINITE_TIME</label>
+			<label kind="assignment" x="-1504" y="-848">r1 := reactant1,
+T := timeL[r1],
+c := 0</label>
+		</transition>
+	</template>
+	<system>
+//Reaction R2 (B) --&gt; R3 (A)
+const int R2_R3_tLower[15+1] := {
+INFINITE_TIME, 250, 125, 83, 63, 50, 42, 36, 31, 28, 25, 23, 21, 19, 18, 17};
+const int R2_R3_tUpper[15+1] := {
+INFINITE_TIME, 250, 125, 83, 63, 50, 42, 36, 31, 28, 25, 23, 21, 19, 18, 17};
+
+R2_R3 = Reaction_R2_R3(R2, R3, R3, R2_R3_tLower, R2_R3_tUpper, 1, reacting[0], reacting[1], reacting[1]);
+
+//Reaction R1 (C) --&gt; R3 (A)
+const int R1_R3_tLower[15+1] := {
+INFINITE_TIME, 250, 125, 83, 63, 50, 42, 36, 31, 28, 25, 23, 21, 19, 18, 17};
+const int R1_R3_tUpper[15+1] := {
+INFINITE_TIME, 250, 125, 83, 63, 50, 42, 36, 31, 28, 25, 23, 21, 19, 18, 17};
+
+R1_R3 = Reaction_R1_R3(R1, R3, R3, R1_R3_tLower, R1_R3_tUpper, 1, reacting[2], reacting[1], reacting[1]);
+
+//Reaction R0 (D) --| R3 (A)
+const int R0_R3_tLower[15+1] := {
+INFINITE_TIME, 250, 125, 83, 63, 50, 42, 36, 31, 28, 25, 23, 21, 19, 18, 17};
+const int R0_R3_tUpper[15+1] := {
+INFINITE_TIME, 250, 125, 83, 63, 50, 42, 36, 31, 28, 25, 23, 21, 19, 18, 17};
+
+R0_R3 = Reaction_R0_R3(R0, R3, R3, R0_R3_tLower, R0_R3_tUpper, -1, reacting[3], reacting[1], reacting[1]);
+
+
+
+
+
+system R2_R3, R1_R3, R0_R3;
+
+</system>
+</nta>

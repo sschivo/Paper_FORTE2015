@@ -1,0 +1,498 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE nta PUBLIC '-//Uppaal Team//DTD Flat System 1.1//EN' 'http://www.it.uu.se/research/group/darts/uppaal/flat-1_1.dtd'>
+<nta>
+<declaration>
+// Place global declarations here.
+clock globalTime;
+const int INFINITE_TIME = -1;
+const int N_REACTANTS = 4;
+broadcast chan reacting[N_REACTANTS];
+
+//R2 = B
+int R2 := 15;
+const int R2Levels := 15;
+
+//R3 = A
+int R3 := 0;
+const int R3Levels := 15;
+
+//R1 = C
+int R1 := 15;
+const int R1Levels := 15;
+
+//R0 = D
+int R0 := 15;
+const int R0Levels := 15;
+
+
+typedef struct {
+	int[-99980001, 99980001] b;
+	int e;
+} double;
+
+const double zero = {0, 0};
+const double INFINITE_TIME_DOUBLE = {-1000, -3}; //INFINITE_TIME (-1) translated into double
+
+typedef int[-1, 1073741822] time_t;
+
+typedef struct {
+	time_t T;
+} timeActivity;
+
+//Reaction R2 (B) --> R3 (A)
+timeActivity R2_R3;
+const double k_R2_R3 = {4000, -6};
+
+//Reaction R1 (C) --> R3 (A)
+timeActivity R1_R3;
+const double k_R1_R3 = {4000, -6};
+
+//Reaction R0 (D) --| R3 (A)
+timeActivity R0_R3;
+const double k_R0_R3 = {4000, -6};
+
+
+
+double subtract(double a, double b) { // a - b
+	double r = {-1000, -1000};
+	if (a.b == 0) {
+		r.b = -b.b;
+		r.e = b.e;
+		return r;
+	}
+	if (b.b == 0) {
+		return a;
+	}
+	if ((a.e - b.e) &gt;= 4) return a;
+	if ((b.e - a.e) &gt;= 4) {
+		r.b = -b.b;
+		r.e = b.e;
+		return r;
+	}
+	if (a.e == b.e) {
+		r.b = a.b - b.b;
+		r.e = a.e;
+	}
+	if (a.e - b.e == 1) {
+		r.b = a.b - b.b/10;
+		r.e = a.e;
+	}
+	if (a.e - b.e == 2) {
+		r.b = a.b - b.b/100;
+		r.e = a.e;
+	}
+	if (a.e - b.e == 3) {
+		r.b = a.b - b.b/1000;
+		r.e = a.e;
+	}
+	if (b.e - a.e == 1) {
+		r.b = a.b/10 - b.b;
+		r.e = b.e;
+	}
+	if (b.e - a.e == 2) {
+		r.b = a.b/100 - b.b;
+		r.e = b.e;
+	}
+	if (b.e - a.e == 3) {
+		r.b = a.b/1000 - b.b;
+		r.e = b.e;
+	}
+	if ((r.b &gt; 0 &amp;&amp; r.b &lt; 10) || (r.b &lt; 0 &amp;&amp; r.b &gt; -10)) {
+		r.b = r.b * 1000;
+		r.e = r.e - 3;
+	} else if ((r.b &gt; 0 &amp;&amp; r.b &lt; 100) || (r.b &lt; 0 &amp;&amp; r.b &gt; -100)) {
+		r.b = r.b * 100;
+		r.e = r.e - 2;
+	} else if ((r.b &gt; 0 &amp;&amp; r.b &lt; 1000) || (r.b &lt; 0 &amp;&amp; r.b &gt; -1000)) {
+		r.b = r.b * 10;
+		r.e = r.e - 1;
+	}
+	return r;
+}
+
+double add(double a, double b) { // a + b
+	double r = {-1000,-1000};
+	if (a.b == 0) {
+		return b;
+	}
+	if (b.b == 0) {
+		return a;
+	}
+	if ((a.e - b.e) &gt;= 4) return a;
+	if ((b.e - a.e) &gt;= 4) return b;
+	if (a.e == b.e) {
+		r.b = a.b + b.b;
+		r.e = a.e;
+	}
+	if (a.e - b.e == 1) {
+		r.b = a.b + b.b/10;
+		r.e = a.e;
+	}
+	if (a.e - b.e == 2) {
+		r.b = a.b + b.b/100;
+		r.e = a.e;
+	}
+	if (a.e - b.e == 3) {
+		r.b = a.b + b.b/1000;
+		r.e = a.e;
+	}
+	if (b.e - a.e == 1) {
+		r.b = a.b/10 + b.b;
+		r.e = b.e;
+	}
+	if (b.e - a.e == 2) {
+		r.b = a.b/100 + b.b;
+		r.e = b.e;
+	}
+	if (b.e - a.e == 3) {
+		r.b = a.b/1000 + b.b;
+		r.e = b.e;
+	}
+	if ((r.b &gt; 0 &amp;&amp; r.b &lt; 10) || (r.b &lt; 0 &amp;&amp; r.b &gt; -10)) {
+		r.b = r.b * 1000;
+		r.e = r.e - 3;
+	} else if ((r.b &gt; 0 &amp;&amp; r.b &lt; 100) || (r.b &lt; 0 &amp;&amp; r.b &gt; -100)) {
+		r.b = r.b * 100;
+		r.e = r.e - 2;
+	} else if ((r.b &gt; 0 &amp;&amp; r.b &lt; 1000) || (r.b &lt; 0 &amp;&amp; r.b &gt; -1000)) {
+	r.b = r.b * 10;
+		r.e = r.e - 1;
+	}
+	return r;
+}
+
+double multiply(double a, double b) { // a * b
+	double r;
+	r.b = a.b * b.b;
+	if (r.b % 1000 &lt; 500) {
+		r.b = r.b / 1000;
+	} else {
+		r.b = 1 + r.b / 1000;
+	}
+	r.e = a.e + b.e + 3;
+	if ((r.b &gt; 0 &amp;&amp; r.b &lt; 10) || (r.b &lt; 0 &amp;&amp; r.b &gt; -10)) {
+		r.b = r.b * 1000;
+		r.e = r.e - 3;
+	} else if ((r.b &gt; 0 &amp;&amp; r.b &lt; 100) || (r.b &lt; 0 &amp;&amp; r.b &gt; -100)) {
+		r.b = r.b * 100;
+		r.e = r.e - 2;
+	} else if ((r.b &gt; 0 &amp;&amp; r.b &lt; 1000) || (r.b &lt; 0 &amp;&amp; r.b &gt; -1000)) {
+		r.b = r.b * 10;
+		r.e = r.e - 1;
+	} else if (r.b &gt; 9999 || r.b &lt; -9999) {
+		r.b = r.b / 10;
+		r.e = r.e + 1;
+	}
+	return r;
+}
+
+double inverse(double a) { // 1 / a
+	double r;
+	if (a.b == 0) {
+		return INFINITE_TIME_DOUBLE;
+	}
+	r.b = 1000000 / a.b;
+	r.e = -6 - a.e;
+	if ((r.b &gt; 0 &amp;&amp; r.b &lt; 10) || (r.b &lt; 0 &amp;&amp; r.b &gt; -10)) {
+		r.b = r.b * 1000;
+		r.e = r.e - 3;
+	} else if ((r.b &gt; 0 &amp;&amp; r.b &lt; 100) || (r.b &lt; 0 &amp;&amp; r.b &gt; -100)) {
+		r.b = r.b * 100;
+		r.e = r.e - 2;
+	} else if ((r.b &gt; 0 &amp;&amp; r.b &lt; 1000) || (r.b &lt; 0 &amp;&amp; r.b &gt; -1000)) {
+		r.b = r.b * 10;
+		r.e = r.e - 1;
+	}
+	return r;
+}
+
+time_t power(int a, int b) { // a ^ b (b &gt;= 0)
+	time_t r = 1;
+	while (b &gt; 0) {
+		r = r * a;
+		b = b - 1;
+	}
+	return r;
+}
+
+time_t round(double a) { // double --&gt; integer
+	if (a.e &lt; -3) {
+		if (a.b &lt; 5000) return 0;
+		else return 1;
+	}
+	if (a.e == -1) {
+		if (a.b % 10 &lt; 5) {
+			return a.b / 10;
+		} else {
+			return 1 + a.b / 10;
+		}
+	}
+	if (a.e == -2) {
+		if (a.b % 100 &lt; 50) {
+			return a.b / 100;
+		} else {
+			return 1 + a.b / 100;
+		}
+	}
+	if (a.e == -3) {
+		if (a.b % 1000 &lt; 500) {
+			return a.b / 1000;
+		} else {
+			return 1 + a.b / 1000;
+		}
+	}
+	return a.b * power(10, a.e);
+}
+
+double scenario1(double k, double r1, double r1Levels, bool r1Active) {
+	double E;
+	if (r1Active) { //If we depend on active R1, the level of activity is the value of E
+		E = r1;
+	} else { //otherwise we find the inactivity level via the total number of levels
+		E = subtract(r1Levels, r1);
+	}
+	return multiply(k, E);
+}
+
+
+double scenario2_3(double k, double r2, double r2Levels, bool r2Active, double r1, double r1Levels, bool r1Active) {
+	double E, S;
+	if (r1Active) { //If we depend on active R1, the level of activity is the value of E
+		E = r1;
+	} else { //otherwise we find the inactivity level via the total number of levels
+		E = subtract(r1Levels, r1);
+	}
+	if (r2Active) { //Same for R2
+		S = r2;
+	} else {
+		S = subtract(r2Levels, r2);
+	}
+	return multiply(k, multiply(E, S));
+}
+
+
+double int_to_double(int a) { //Used to translate an activity level into double.
+	double r;
+	if (a &lt; 10) {
+		r.b = a * 1000;
+		r.e = -3;
+	} else if (a &lt; 100) {
+		r.b = a * 100;
+		r.e = -2;
+	} else if (a &lt; 1000) {
+		r.b = a * 10;
+		r.e = -1;
+	} else if (a &lt; 10000) { //Our model supports up to 100 levels, so this should be the most it makes sense to check
+		r.b = a;
+		r.e = 0;
+	}
+	return r;
+}
+</declaration>
+
+<template>
+  <name>Reactant_R3</name>
+  <parameter>int&amp; R, const int MAX</parameter>
+  <declaration>int[-1, 1] delta, deltaNew, deltaOld, deltaOldOld, deltaOldOldOld;
+bool deltaAlternating;
+time_t tL, tU;
+clock c;
+double totalRate;
+
+
+void updateDeltaOld() {
+	deltaOldOldOld = deltaOldOld;
+	deltaOldOld = deltaOld;
+	deltaOld = deltaNew;
+	deltaNew = delta;
+	deltaAlternating = false;
+	if (deltaOldOldOld != 0) { //We have updated delta at least 4 times, so we can see whether we have an oscillation
+		if (deltaNew == deltaOldOld &amp;&amp; deltaOld == deltaOldOldOld &amp;&amp; deltaNew != deltaOld) { //Pairwise equal and alternating (e.g. +1, -1, +1, -1): we are oscillating
+			deltaAlternating = true;
+		}
+	}
+}
+
+void update() {
+	double R2_R3_r = scenario1(k_R2_R3, int_to_double(R2), int_to_double(R2Levels), true);
+	double R1_R3_r = scenario1(k_R1_R3, int_to_double(R1), int_to_double(R1Levels), true);
+	double R0_R3_r = scenario1(k_R0_R3, int_to_double(R0), int_to_double(R0Levels), true);
+	totalRate = subtract(add(add(zero, R2_R3_r), R1_R3_r), R0_R3_r);
+	R2_R3.T = round(inverse(R2_R3_r));
+	R1_R3.T = round(inverse(R1_R3_r));
+	R0_R3.T = round(inverse(R0_R3_r));
+	if (totalRate.b &lt; 0) {
+		delta = -1;
+		totalRate.b = -totalRate.b;
+	} else {
+		delta = 1;
+	}
+	if (totalRate.b != 0) {
+		tL = round(inverse(totalRate));
+		tU = tL;
+	} else {
+		tL = INFINITE_TIME;
+		tU = INFINITE_TIME;
+	}
+	if (tL != INFINITE_TIME &amp;&amp; tL &gt; tU) { //We use rounded things: maybe the difference between tL and tU was not so great, and with some rounding problems we could have this case
+		tL = tU;
+	}
+	updateDeltaOld();
+}
+
+void react() {
+	if (0 &lt;= R + delta &amp;&amp; R + delta &lt;= MAX) {
+		R = R + delta;
+	}
+	update();
+}
+
+bool can_react() {
+	return !deltaAlternating &amp;&amp; (tL != INFINITE_TIME &amp;&amp; tL != 0 &amp;&amp; tU != 0 &amp;&amp; ((delta &gt; 0 &amp;&amp; R &lt; MAX) || (delta &lt; 0 &amp;&amp; R &gt; 0)));
+}
+
+bool cant_react() {
+	return deltaAlternating || (tL == INFINITE_TIME || tL == 0 || tU == 0 || (delta &gt; 0 &amp;&amp; R == MAX) || (delta &lt; 0 &amp;&amp; R == 0));
+}</declaration>
+  <location id="id0" x="-1896" y="-728">
+    <name x="-1960" y="-752">stubborn</name>
+    <committed/>
+  </location>
+  <location id="id1" x="-1528" y="-728">
+    <committed/>
+  </location>
+  <location id="id6" x="-1256" y="-728">
+    <name x="-1248" y="-752">start</name>
+    <committed/>
+  </location>
+  <location id="id7" x="-1552" y="-856">
+    <name x="-1656" y="-872">not_reacting</name>
+  </location>
+  <location id="id8" x="-1416" y="-728">
+    <name x="-1400" y="-752">updating</name>
+    <committed/>
+  </location>
+  <location id="id9" x="-1664" y="-728">
+    <name x="-1728" y="-744">waiting</name>
+    <label kind="invariant" x="-1728" y="-720">c &lt;= tU
+|| tU ==
+INFINITE_TIME</label>
+  </location>
+  <init ref="id6"/>
+  <transition>
+    <source ref="id1"/>
+    <target ref="id9"/>
+    <label kind="guard" x="-1640" y="-760">tU == INFINITE_TIME
+|| c &lt;= tU</label>
+  </transition>
+  <transition>
+    <source ref="id1"/>
+    <target ref="id9"/>
+    <label kind="guard" x="-1608" y="-712">tU != INFINITE_TIME
+&amp;&amp; c &gt; tU</label>
+    <label kind="assignment" x="-1608" y="-680">c := tU</label>
+    <nail x="-1528" y="-680"/>
+    <nail x="-1608" y="-680"/>
+  </transition>
+  <transition>
+    <source ref="id0"/>
+    <target ref="id8"/>
+    <label kind="guard" x="-1816" y="-632">c &lt; tL</label>
+    <label kind="assignment" x="-1816" y="-616">update()</label>
+    <nail x="-1848" y="-616"/>
+    <nail x="-1464" y="-616"/>
+  </transition>
+  <transition>
+    <source ref="id0"/>
+    <target ref="id9"/>
+    <label kind="guard" x="-1816" y="-680">c &gt;= tL</label>
+    <nail x="-1840" y="-664"/>
+    <nail x="-1744" y="-664"/>
+  </transition>
+  <transition>
+    <source ref="id6"/>
+    <target ref="id8"/>
+    <label kind="assignment" x="-1344" y="-728">update()</label>
+  </transition>
+  <transition>
+    <source ref="id7"/>
+    <target ref="id8"/>
+    <label kind="synchronisation" x="-1512" y="-904">reacting[0]?</label>
+    <label kind="assignment" x="-1528" y="-888">update(), c:= 0</label>
+    <nail x="-1552" y="-888"/>
+    <nail x="-1376" y="-888"/>
+    <nail x="-1376" y="-848"/>
+  </transition>
+  <transition>
+    <source ref="id7"/>
+    <target ref="id8"/>
+    <label kind="synchronisation" x="-1512" y="-944">reacting[2]?</label>
+    <label kind="assignment" x="-1528" y="-928">update(), c:= 0</label>
+    <nail x="-1552" y="-928"/>
+    <nail x="-1376" y="-928"/>
+    <nail x="-1376" y="-848"/>
+  </transition>
+  <transition>
+    <source ref="id7"/>
+    <target ref="id8"/>
+    <label kind="synchronisation" x="-1512" y="-984">reacting[3]?</label>
+    <label kind="assignment" x="-1528" y="-968">update(), c:= 0</label>
+    <nail x="-1552" y="-968"/>
+    <nail x="-1376" y="-968"/>
+    <nail x="-1376" y="-848"/>
+  </transition>
+  <transition>
+    <source ref="id8"/>
+    <target ref="id7"/>
+    <label kind="guard" x="-1512" y="-840">cant_react()</label>
+    <nail x="-1416" y="-824"/>
+    <nail x="-1552" y="-824"/>
+  </transition>
+  <transition>
+    <source ref="id8"/>
+    <target ref="id1"/>
+    <label kind="guard" x="-1512" y="-744">can_react()</label>
+  </transition>
+  <transition>
+    <source ref="id9"/>
+    <target ref="id8"/>
+    <label kind="guard" x="-1576" y="-816">c &gt;= tL</label>
+    <label kind="synchronisation" x="-1584" y="-800">reacting[1]!</label>
+    <label kind="assignment" x="-1568" y="-784">react(), c := 0</label>
+    <nail x="-1632" y="-784"/>
+    <nail x="-1464" y="-784"/>
+  </transition>
+  <transition>
+    <source ref="id9"/>
+    <target ref="id0"/>
+    <label kind="synchronisation" x="-1832" y="-744">reacting[0]?</label>
+    <nail x="-1752" y="-728"/>
+    <nail x="-1840" y="-728"/>
+  </transition>
+  <transition>
+    <source ref="id9"/>
+    <target ref="id0"/>
+    <label kind="synchronisation" x="-1832" y="-792">reacting[2]?</label>
+    <nail x="-1752" y="-776"/>
+    <nail x="-1840" y="-776"/>
+  </transition>
+  <transition>
+    <source ref="id9"/>
+    <target ref="id0"/>
+    <label kind="synchronisation" x="-1832" y="-840">reacting[3]?</label>
+    <nail x="-1752" y="-824"/>
+    <nail x="-1840" y="-824"/>
+  </transition>
+</template>
+
+
+
+<system>
+R3_ = Reactant_R3(R3, 15);
+
+
+
+system R3_;
+
+</system>
+</nta>

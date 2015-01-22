@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.5.22)  22 JAN 2015 11:53
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.5.22)  22 JAN 2015 16:36
 entering extended mode
  restricted \write18 enabled.
  Source specials enabled.
@@ -493,7 +493,7 @@ File: images/grafico_ngf_reaction_10levels.png Graphic file (type png)
 
 <use images/grafico_ngf_reaction_10levels.png>
 Package pdftex.def Info: images/grafico_ngf_reaction_10levels.png used on input
- line 529.
+ line 534.
 (pdftex.def)             Requested size: 122.1287pt x 67.88051pt.
 
 <images/grafico_ngf_reactant_10levels.png, id=111, 1744.5175pt x 969.6225pt>
@@ -501,30 +501,30 @@ File: images/grafico_ngf_reactant_10levels.png Graphic file (type png)
 
 <use images/grafico_ngf_reactant_10levels.png>
 Package pdftex.def Info: images/grafico_ngf_reactant_10levels.png used on input
- line 530.
+ line 535.
 (pdftex.def)             Requested size: 122.1287pt x 67.88051pt.
  [10 <./images/grafico_ngf_reaction_10levels.png (PNG copy)> <./images/grafico_
 ngf_reactant_10levels.png (PNG copy)>]
-LaTeX Font Info:    Try loading font information for OMS+cmtt on input line 598
+LaTeX Font Info:    Try loading font information for OMS+cmtt on input line 603
 .
  (/usr/share/texmf/tex/latex/R/tex/latex/omscmtt.fd
 File: omscmtt.fd 
 )
 LaTeX Font Info:    Font shape `OMS/cmtt/m/n' in size <9> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 598.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 603.
  [11] [12] [13]
 <images/model_checking_ui.png, id=128, 899.36pt x 352.31625pt>
 File: images/model_checking_ui.png Graphic file (type png)
 
 <use images/model_checking_ui.png>
-Package pdftex.def Info: images/model_checking_ui.png used on input line 713.
+Package pdftex.def Info: images/model_checking_ui.png used on input line 718.
 (pdftex.def)             Requested size: 242.98541pt x 95.18579pt.
  [14 <./images/model_checking_ui.png>]
 (./Paper_FORTE15.bbl [15] [16]) [17] (./Paper_FORTE15.aux) ) 
 Here is how much of TeX's memory you used:
  5068 strings out of 493304
  75279 string characters out of 6139871
- 157269 words of memory out of 5000000
+ 157250 words of memory out of 5000000
  8405 multiletter control sequences out of 15000+600000
  12974 words of font info for 51 fonts, out of 8000000 for 9000
  957 hyphenation exceptions out of 8191
@@ -551,7 +551,7 @@ ti9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pf
 b></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt9.pfb></usr
 /share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/
 share/texlive/texmf-dist/fonts/type1/public/wasy/wasy9.pfb>
-Output written on Paper_FORTE15.pdf (17 pages, 638834 bytes).
+Output written on Paper_FORTE15.pdf (17 pages, 637751 bytes).
 PDF statistics:
  216 PDF objects out of 1000 (max. 8388607)
  145 compressed objects within 2 object streams

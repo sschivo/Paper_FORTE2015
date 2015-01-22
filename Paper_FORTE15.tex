@@ -25,13 +25,13 @@
 
 \title{Towards interactive model checking\\of biological pathway dynamics}
 
-\author{Stefano Schivo${}^\star$
-\and Jetse Scholma${}^\star$
-\and Paul E. van der Vet
-\and Marcel Karperien
-\and Janine N. Post
-\and Jaco van de Pol${}^{\star \star}$
-\and Rom Langerak${}^{\star \star}$}
+\author{Stefano~Schivo${}^\star$
+\and Jetse~Scholma${}^\star$
+% \and Paul E. van der Vet
+\and Marcel~Karperien
+\and Janine~N.~Post
+\and Jaco~van~de~Pol${}^{\star \star}$
+\and Rom~Langerak${}^{\star \star}$}
 
 \institute{University of Twente, Enschede, The Netherlands}
 
@@ -101,9 +101,9 @@ The current knowledge on signaling pathways (mostly organized in databases such 
 or PhosphoSite~\cite{phosphosite}) suggests that the interactions involved in a cellular response assume more often
 the shape of a network than that of a simple chain of signal relays.
 Such networks are typically highly connected, involving feedback loops and crosstalk
-between multiple pathways, making it difficult for the human
-brain to grasp their dynamic behavior.
-For this reason, a computational support is required when studying non-trivial biological networks.
+between multiple pathways, making it difficult 
+to grasp their dynamic behavior.
+For this reason, computational support is required when studying non-trivial biological networks.
 
 A number of software tools are available
 for modeling complex networks of biochemical interactions~\cite{bio-pepa,blenx,copasi,e-cell,gna}.
@@ -201,7 +201,7 @@ More often, they assume the shape of a network with multiple feedback loops and 
 This complexity is an added difficulty for the study of such networks, reducing the possibilities
 %for the human brain alone
 to deduce the dynamic behavior of a signaling network by inspecting its static representation.
-For this reason, an efficient computational support is essential when representing and analyzing the behavior
+For this reason, efficient computational support is essential when representing and analyzing the behavior
 of complex signaling networks.
 
 
@@ -284,7 +284,7 @@ possibly using a qualitative measure from a predefined set ({\sf very slow}, {\s
 % leads to a kinetic model that is still precise enough to faithfully represent the behavior of a signaling network.
 The approximation allows us to reduce the dependence of a model from often unavailable quantitative
 parameters for biochemical reaction kinetics, while keeping a precision level that is still precise enough to be useful.
-For a more precise dissertation on how reaction rates are computed in ANIMO, we recommend~\cite{animo-ieee},
+For a more precise explanation on how reaction rates are computed in ANIMO, we recommend~\cite{animo-ieee},
 where the previously used \tas\ model is presented. The reader interested in the current
 methods for parameter setting in ANIMO can refer to~\cite{animo-syncop}.
 
@@ -356,6 +356,7 @@ while function {\sf update()} in~{\protect\subref{fig:ta-new-model}}
 replaces the references to the pre-computed tables {\sf tL[]}, {\sf tU[]} with on-the-fly computation (see Sect.~\ref{sec:rates-ta-model}).
 % \ta\ template used to represent a net reaction in the reactant-centered model.
 \label{fig:ta-models}}
+\vspace{-1mm}
 \end{figure}
 
 
@@ -366,17 +367,22 @@ The value of the reaction rate is thus translated into a time value to be used a
 time bound in the \ta\ representing $R_A$ (see Fig.~\ref{fig:ta-new-model}) by computing
 $$T_A = \frac{1}{\mbox{abs}(r_a)}$$
 with $\mbox{abs}(r_a)$ the absolute value of $r_a$. In order to represent
-a natural variability in reaction timing, we relax the exact value of $T_A$ by
+a natural uncertainty or variability in reaction timing, we relax the exact value of $T_A$ by
 defining bounds of~$\pm~5\%$ (which can be changed by the user):
 $$
-\begin{array}{lcl}
-  \mbox{\sf tL} &=& T_A \times 0.95 \\
+\begin{array}{lcllcl}
+  \mbox{\sf tL} &=& T_A \times 0.95 \qquad
   \mbox{\sf tU} &=& T_A \times 1.05
 \end{array}
 $$
 Analogously to the reaction-centered model of~\cite{animo-ieee},
 we will call {\sf tL} the \emph{lower time bound} and {\sf tU} the \emph{upper time bound}.
-Note that here, differently from what presented in~\cite{animo-ieee}, we do not define
+So we replace an exact reaction time by an interval of possible reaction times,
+%  (this means that we
+% implicitly assume a uniform distribution of the reaction time over this interval).
+implicitly assuming a uniform distribution over this interval.
+
+Differently from what presented in~\cite{animo-ieee}, we do not define
 pre-computed tables with all possible values for {\sf tL} and {\sf tU}: this is because
 the number of variables for the computation of a reaction rate can be arbitrarily high, and
 the size of such tables grows exponentially with the number of variables.
@@ -501,9 +507,8 @@ example location {\sf waiting} is used to wait before updating the reactant.
 % in the reaction-centered model, 
 
 Being based on the same abstractions, the two models can be analyzed with the same
-UPPAAL queries for all the cases for which biology is involved. The differences can be seen only if the
-analysis focuses on the single automaton level and explicitly refers to locations: such type of analysis
-is normally not necessary when considering the model as a whole and using it for what it is, i.e. an
+UPPAAL queries as long as no explicit reference is made to \tas\ locations. Such an analysis
+would normally not be necessary if considering the model as a whole and using it for what it is, i.e. an
 abstract representation of a set of biological processes.
 
 We note that replacing all the existing reactions with the net reactions relative to each
@@ -625,8 +630,8 @@ The initial conditions are:
 
 We note that performing model checking means dealing with state space explosion problems,
 and model reduction is recommendable in order to obtain any result within adequate time limits. One of the
-most user-accessible ways available in ANIMO to reduce the size of a model is setting the uncertainty to 0
-before performing model checking queries.
+most user-accessible ways available in ANIMO to reduce the size of a model is setting the ``natural uncertainty''
+defined in Sect.~\ref{sec:reactant-centered} to 0 before performing model checking queries.
 In order to still consider some biological variability, the user can manually perform multiple model checking queries with changed interaction parameters.
 The tests performed in this section have an uncertainty level set to 0, instead of the $5\%$ recommended for simulation-based experiments, to
 make model checking feasible within seconds.
@@ -760,7 +765,7 @@ We have presented here how the ANIMO tool
 was improved to provide a more interactive modeling process.
 Thanks to the increased performances of the new reactant-centered modeling approach,
 we are able to obtain answers to model checking queries in a matter of seconds.
-Coherently with the user friendliness of the tool, the features
+The features
 of model checking are made accessible without the need to directly deal with \tas\ models.
 In this way, ANIMO acts as an intermediary between the biologist and a formal
 representation of biological signaling pathways, letting the experts concentrate
@@ -785,8 +790,8 @@ In order to allow for meaningful in silico experiments, we plan to purposefully 
 parts in our models, which would allow for drug dosage investigations through model checking.
 This can be done e.g. through the definition of intervals for the values of some reaction kinetic constants,
 adding considerable uncertainty in the timing of those reactions.
-A model of this type could then be interrogated with queries like ``How much X, Y and Z do we need to provide,
-and at which time points, in order to obtain targets A, B and C to be active?''.
+% A model of this type could then be interrogated with queries like ``How much X, Y and Z do we need to provide,
+% and at which time points, in order to obtain targets A, B and C to be active?''.
 More useful results can be achieved through proper application of the statistical model checking part of UPPAAL~\cite{uppaal-smc} to
 an extended version of our model to include realistically significant stochastic behavior.
 Finally, in order to further improve performances, the extension of ANIMO with support for a multi-core model checking approach based on the

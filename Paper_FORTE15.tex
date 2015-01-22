@@ -20,6 +20,7 @@
 \newcommand{\ta}{Timed Automaton}
 \newcommand{\tas}{Timed Automata}
 \newcommand{\nat}{\mathbb{N}}
+\setlength{\belowcaptionskip}{-10pt}
 
 
 \title{Towards interactive model checking\\of biological pathway dynamics}
@@ -56,27 +57,27 @@
 
 Biological systems such as regulatory or gene networks can be
 seen as a particular type of distributed systems, and for this reason
-they can be modelled with the same tools that were developed in the
+they can be modeled with the same tools that were developed in the
 computer science context. However, tools designed to model distributed
 systems often require a computer science background, making their use
 less attractive for biologists. ANIMO (Analysis of Networks with
-Interactive MOdelling) was built with the purpose to provide biologists
-with access to the powerful modelling formalism of Timed Automata
+Interactive MOdeling) was built with the aim to provide biologists
+with access to the powerful modeling formalism of Timed Automata
 in a user friendly way. Continuous dynamics is handled by discrete approximations.
 
 This brings computational support closer to the biological laboratories, 
 where large amounts of data are generated on a daily basis. Thanks to 
-computational models, biological data can be analysed in different ways, 
+computational models, biological data can be analyzed in different ways, 
 helping biologists to formulate new hypotheses, drive experimental research 
 and share knowledge on biological processes.
 
-In this paper we introduce an improved modelling approach that allows us
+In this paper we introduce an improved modeling approach that allows us
 to considerably increase ANIMO's performances, opening the way for the
 analysis of bigger models. Moreover, this improvement makes the introduction
 of model checking in ANIMO a realistic feature, allowing for
 reduced computation times. The user interface of ANIMO allows to rapidly
 build non-trivial models and check them against properties formulated in
-a human-readable language, making modelling a powerful
+a human-readable language, making modeling a powerful
 support for biological research.
 
 \end{abstract}
@@ -101,7 +102,7 @@ or PhosphoSite~\cite{phosphosite}) suggests that the interactions involved in a 
 the shape of a network than that of a simple chain of signal relays.
 Such networks are typically highly connected, involving feedback loops and crosstalk
 between multiple pathways, making it difficult for the human
-brain to understand their dynamic behavior.
+brain to grasp their dynamic behavior.
 For this reason, a computational support is required when studying non-trivial biological networks.
 
 A number of software tools are available
@@ -124,7 +125,7 @@ the nodes-edges notation normally used in the context of biology (see Fig.~\ref{
 Previously, ANIMO supported only interactive exploration of network dynamics based on simulation runs. 
 Model checking queries could be answered through the UPPAAL tool~\cite{uppaal}, but
 the required knowledge of temporal logic together with the usually long response times slowed down the investigation process.
-In order to pave the way for a widespread use of model checking on non-trivial models of
+In order to encourage the use of model checking on non-trivial models of
 signaling networks, we updated ANIMO with a new \tas\ model (presented here). This marks a relevant improvement in terms of
 performances with respect to the model previously used in ANIMO. Moreover, consistently with the intents of our tool, we
 implemented also a user interface for the definition of model checking queries in ANIMO. This allows a
@@ -132,14 +133,23 @@ user to interrogate an ANIMO model without requiring previous experience in temp
 features are available in the latest version of ANIMO, which was recently reimplemented as a Cytoscape 3 app~\cite{animo-app-site}:
 this lets users profit of the additional analysis features made available by the other apps in the Cytoscape environment.
 
-The rest of the paper is organized as follows: Section~\ref{sec:basics} introduces the basic aspects
-of signaling pathways, \tas\ and ANIMO; Section~\ref{sec:animo-new} illustrates a new way of using \tas\ to model
-activity-based networks;
-Section~\ref{sec:animo-comparison} shows a comparison between the new modeling approach and the
+% The rest of the paper is organized as follows:
+% Section~\ref{sec:basics} introduces the basic aspects
+% of signaling pathways, \tas\ and ANIMO; Section~\ref{sec:animo-new} illustrates a new way of using \tas\ to model
+% activity-based networks;
+% Section~\ref{sec:animo-comparison} shows a comparison between the new modeling approach and the
+% one previously used in ANIMO,
+% focusing on model analysis performances; Section~\ref{sec:animo-model-checking-ui} describes the
+% interface additions to make model checking accessible to ANIMO users;
+% Section~\ref{sec:conclusion} concludes the paper, discussing future work.
+The paper continues as follows.
+After introducing the basic concepts in Section~\ref{sec:basics}, we illustrate in
+Section~\ref{sec:animo-new} a new way of using \tas\ in ANIMO.
+In Section~\ref{sec:animo-comparison} we present a comparison between the new modeling approach and the
 one previously used in ANIMO,
-focusing on model analysis performances; Section~\ref{sec:animo-model-checking-ui} describes the
-interface additions to make model checking accessible to ANIMO users;
-Section~\ref{sec:conclusion} concludes the paper, discussing future work.
+focusing on model analysis performances. In Section~\ref{sec:animo-model-checking-ui} we describe
+how model checking was made accessible to ANIMO users.
+We conclude the paper with Section~\ref{sec:conclusion}, discussing future work.
 
 \section{Preliminaries}\label{sec:basics}
 
@@ -188,7 +198,8 @@ The active {\sf TK} can in turn activate its target {\sf T}, enabling it to carr
 The current knowledge on signaling pathways~\cite{kegg,phosphosite} evidences the fact
 that signaling interactions are rarely a simple chain of activations as represented in Figure~\ref{fig:small-example-net}.
 More often, they assume the shape of a network with multiple feedback loops and crosstalk from different signaling sources.
-This complexity is an added difficulty for the study of such networks, reducing the possibilities for the human brain alone
+This complexity is an added difficulty for the study of such networks, reducing the possibilities
+%for the human brain alone
 to deduce the dynamic behavior of a signaling network by inspecting its static representation.
 For this reason, an efficient computational support is essential when representing and analyzing the behavior
 of complex signaling networks.
@@ -204,7 +215,7 @@ depend on conditions on clocks. In particular, a \emph{guard} defines when a tra
 may be taken, while an \emph{invariant} is the condition for permanence in a location.
 A transition can also allow two automata to \emph{synchronize},
 with each participant performing one of two complementary actions (\emph{input} and \emph{output})
-on a synchronization channel. A set of clocks may also be reset by a transition, causing them to restart counting from 0.
+on a synchronization channel. A set of clocks may also be reset by a transition, causing them to restart from 0.
 
 The models we will present here were implemented using the software tool UPPAAL~\cite{uppaal}, which adds a number of features
 to the basic definition of \tas. Some of these extensions include: support for integer variables in addition to clocks,
@@ -212,8 +223,8 @@ broadcast synchronization channels (one sender, many receivers), definition of C
 operations besides clock resets.
 UPPAAL also allows for a special type of locations, named \emph{committed} (marked with a {\sf C} in the graphical representation).
 As long as an automaton is in a committed location, time is not allowed to flow. This feature can be used for example to perform immediate
-updates to local variables before letting the computation proceed. Examples of the listed features can be found in the
-\tas\ model described in Section~\ref{sec:ta-model}.
+updates to local variables before letting the computation proceed. Examples of the listed features are found in the
+\tas\ model in Section~\ref{sec:ta-model}.
 
 
 \subsection{Activity-based models in ANIMO}\label{sec:animo-old}
@@ -233,7 +244,7 @@ and $\dashv$ indicating inhibition similarly to traditional representations of s
 \begin{figure}[htb]
 \begin{center}
    \includegraphics[width=.7\textwidth]{images/ANIMO3_MAPK_model} %mapk_model_egf4}
-\end{center}
+\end{center}\vspace{-.5cm}
 \caption{The Cytoscape 3 user interface running the new ANIMO app
 (model from~\cite{animo-ieee}). The \emph{Network} panel in the center contains the nodes-edges
 model of the cross-talking signaling pathways of NGF and EGF, with
@@ -246,6 +257,7 @@ occurring more often at the selected time instant.
 The series {\sf Erk (EGF) data} in the graph is the experimental
 data from~\cite{egf-ngf} for the 100~ng/ml EGF treatment.
 \label{fig:cytoscape}}
+\vspace{-.5cm}
 \end{figure}
 
 We consider a \emph{molecular species} (also called \emph{reactant}) to include all the molecules of the same substance in both their active
@@ -268,10 +280,10 @@ the activity of one or two reactants.
 The rate of each reaction can be scaled by modifying the value of one kinetic constant $k$,
 possibly using a qualitative measure from a predefined set ({\sf very slow}, {\sf slow},
 {\sf medium}, {\sf fast}, {\sf very fast}).
-Approximating the actual reaction dynamics with less detailed single-parameter scenarios
-leads to a kinetic model that is still precise enough to faithfully represent the behavior of a signaling network.
+% Approximating the actual reaction dynamics with less detailed single-parameter scenarios
+% leads to a kinetic model that is still precise enough to faithfully represent the behavior of a signaling network.
 The approximation allows us to reduce the dependence of a model from often unavailable quantitative
-parameters for biochemical reaction kinetics.
+parameters for biochemical reaction kinetics, while keeping a precision level that is still precise enough to be useful.
 For a more precise dissertation on how reaction rates are computed in ANIMO, we recommend~\cite{animo-ieee},
 where the previously used \tas\ model is presented. The reader interested in the current
 methods for parameter setting in ANIMO can refer to~\cite{animo-syncop}.
@@ -301,34 +313,6 @@ with ordinary differential equations (ODEs)~\cite{ode-ma-anche-altro}.
 % \end{figure}
 
 
-\def\scalaOldModel{0.25}
-\def\reactantTA{\includegraphics[scale=0.35]{images/Reactant_R3}}
-\newlength\reactantTAheight
-\setlength\reactantTAheight{\heightof{\reactantTA}}
-
-\begin{figure*}[!htb]
-  \begin{center}
-  \subfloat[\label{fig:network-abcd}]{\begin{minipage}[c][\reactantTAheight]{0.18\textwidth}\begin{center}\includegraphics[scale=1.0]{images/network_abcd}\end{center}\end{minipage}} \qquad\qquad
-  \subfloat[$R_A$\label{fig:ta-new-model}]{\begin{minipage}[c][\reactantTAheight]{0.6\textwidth}\begin{center}\reactantTA\end{center}\end{minipage}} \\
-  \subfloat[$R_1: B \rightarrow A$ \label{fig:ta-old-BA}]{\includegraphics[scale=\scalaOldModel]{images/Reaction_B_A}} \qquad\qquad
-%   \subfloat[$R_2: C \rightarrow A$ \label{fig:ta-old-CA}]{\includegraphics[scale=\scalaOldModel]{images/Reaction_C_A}} \qquad\qquad
-  \subfloat[$R_3: D \dashv A$ \label{fig:ta-old-DA}]{\includegraphics[scale=\scalaOldModel]{images/Reaction_D_A}}
-  \end{center}
-  \caption{
-{\bf\protect\subref{fig:network-abcd}} A signaling network where one node is influenced by three distinct reactions.
-The (virtual) reaction $R_A$ is defined in
-the reactant-centered model as the algebraic sum of the reactions influencing $A$.
-({\bf\protect\subref*{fig:ta-new-model}\--{}\protect\subref*{fig:ta-old-DA}}) \tas\ templates generated by ANIMO for the reactant-centered~{\bf\protect\subref{fig:ta-new-model}}
- and reaction-centered~({\bf\protect\subref*{fig:ta-old-BA}\--{}\protect\subref*{fig:ta-old-DA}}) models of the network in~{\bf\protect\subref{fig:network-abcd}}.
-The templates have been edited for an easier visual comparison; while the template for $R_2$ ($C \rightarrow A$) is qualitatively identical to the one for $R_1$,
-and was left out for the sake of space. Functions {\sf react()}, {\sf can\_react()} and {\sf cant\_react()}
-in~{\protect\subref{fig:ta-new-model}} have the same content as the corresponding guards and updates in ({\bf\protect\subref*{fig:ta-old-BA}\--{}\protect\subref*{fig:ta-old-DA}}),
-while function {\sf update()} in~{\protect\subref{fig:ta-new-model}}
-replaces the references to the pre-computed tables {\sf tL[]}, {\sf tU[]} with on-the-fly computation (see Sect.~\ref{sec:rates-ta-model}).
-% \ta\ template used to represent a net reaction in the reactant-centered model.
-\label{fig:ta-models}}
-\end{figure*}
-
 \subsection{The reactant-centered approach}\label{sec:reactant-centered}
 The reactant-centered model presented here is based on the concept of \emph{net effect} of a set of reactions on a reactant:
 instead of considering each reaction in isolation, we consider their combined influence on each reactant.
@@ -345,6 +329,34 @@ Suppose the settings in the ANIMO network for $R_1$ make its rate depend only on
 activity level of $B$. Then we compute the rate of $R_1$ as $r_1 = [B] \times k_1$, with
 $[B]$ the current activity level of~$B$.
 
+
+\def\scalaOldModel{0.25}
+\def\reactantTA{\includegraphics[scale=0.35]{images/Reactant_R3}}
+\newlength\reactantTAheight
+\setlength\reactantTAheight{\heightof{\reactantTA}}
+
+\begin{figure}[thb]
+  \begin{center}
+  \subfloat[\label{fig:network-abcd}]{\begin{minipage}[c][\reactantTAheight]{0.26\textwidth}\begin{center}\includegraphics[scale=1.0]{images/network_abcd}\end{center}\end{minipage}} \qquad\qquad\quad
+  \subfloat[$R_A$\label{fig:ta-new-model}]{\begin{minipage}[c][\reactantTAheight]{0.6\textwidth}\begin{center}\reactantTA\end{center}\end{minipage}} \\
+  \subfloat[$R_1: B \rightarrow A$ \label{fig:ta-old-BA}]{\includegraphics[scale=\scalaOldModel]{images/Reaction_B_A}} \qquad\qquad
+%   \subfloat[$R_2: C \rightarrow A$ \label{fig:ta-old-CA}]{\includegraphics[scale=\scalaOldModel]{images/Reaction_C_A}} \qquad\qquad
+  \subfloat[$R_3: D \dashv A$ \label{fig:ta-old-DA}]{\includegraphics[scale=\scalaOldModel]{images/Reaction_D_A}}
+  \end{center}\vspace{-.5cm}
+  \caption{
+{\bf\protect\subref{fig:network-abcd}} A signaling network where one node is influenced by three distinct reactions.
+The (virtual) reaction $R_A$ is defined in
+the reactant-centered model as the algebraic sum of the reactions influencing $A$.
+({\bf\protect\subref*{fig:ta-new-model}\--{}\protect\subref*{fig:ta-old-DA}}) \tas\ templates generated by ANIMO for the reactant-centered~{\bf\protect\subref{fig:ta-new-model}}
+ and reaction-centered~({\bf\protect\subref*{fig:ta-old-BA}\--{}\protect\subref*{fig:ta-old-DA}}) models of the network in~{\bf\protect\subref{fig:network-abcd}}.
+The templates have been edited for an easier visual comparison; while the template for $R_2$ ($C \rightarrow A$) is qualitatively identical to the one for $R_1$,
+and was left out for the sake of space. Functions {\sf can\_react()} and {\sf cant\_react()}
+in~{\protect\subref{fig:ta-new-model}} have the same content as the corresponding guards in ({\bf\protect\subref*{fig:ta-old-BA}\--{}\protect\subref*{fig:ta-old-DA}}),
+while function {\sf update()} in~{\protect\subref{fig:ta-new-model}}
+replaces the references to the pre-computed tables {\sf tL[]}, {\sf tU[]} with on-the-fly computation (see Sect.~\ref{sec:rates-ta-model}).
+% \ta\ template used to represent a net reaction in the reactant-centered model.
+\label{fig:ta-models}}
+\end{figure}
 
 
 As with ODEs, if $r_A$ is positive the activity level of $A$ will increase;
@@ -372,9 +384,10 @@ In the example of Figure~\ref{fig:ta-models}, a table to represent the time boun
 for reaction ${R_A}$ would have four dimensions, depending on the activity levels
 of reactants $A$, $B$, $C$ and $D$. Assuming that all four reactants are discretized
 on 101 levels (activity levels from 0 to 100), each of the two tables {\sf tL} and {\sf tU} would contain $101^4 = 104\,060\,401$
-elements. Adding one other reaction $E \rightarrow A$ to the pool would make
-this approach exceed the memory limits of most of the currently available computers, requiring about 78 gigabytes of memory
-to be stored. For this reason, the reaction rates are computed on the fly (see Section~\ref{sec:rates-ta-model}).
+elements. Adding one more reaction $E \rightarrow A$ to the pool would make
+this approach exceed the memory limits of most of the currently available computers
+% , requiring about 78 gigabytes of memory to be stored.
+For this reason, the reaction rates are computed on the fly (see Section~\ref{sec:rates-ta-model}).
 
 
 \subsection{Timed Automata reactant-centered model}\label{sec:ta-model}
@@ -501,7 +514,7 @@ are still the same.
 Two opposite reactions occurring with the same (or similar) frequency will (nearly) cancel each other out: the
 behavior of the single reactions is explicitly represented in the reaction-centered model and gives rise to more oscillations.
 On the other hand, in the reactant-centered model, the trajectory of a reactant's activity level
-is determined taking into account also the cancelling effect of opposite reactions, so the simulations
+is determined taking into account also the canceling effect of opposite reactions, so the simulations
 will generally contain less oscillations.
 From the user's point of view, graphs will look smoother while still exhibiting the same qualitative behavior,
 as can be seen in Figure~\ref{fig:comparison-graph-animo}.
@@ -515,7 +528,7 @@ In the next session we will show that having less oscillations leads in practice
 \begin{center}
   \subfloat[Reaction-centered]{\includegraphics[scale=0.07]{images/grafico_ngf_reaction_10levels}\label{fig:comparison-graph-animo-reaction}}\qquad\qquad
   \subfloat[Reactant-centered]{\includegraphics[scale=0.07]{images/grafico_ngf_reactant_10levels}\label{fig:comparison-graph-animo-reactant}}
-\end{center}
+\end{center}\vspace{-.5cm}
   \caption{Comparison of two ERK activity graphs generated from the model based on the case study from~\cite{animo-ieee} with treatment of 50 ng/ml NGF.
   ERK was set to 10 levels of granularity to evidence the oscillations in the graphs.
   \label{fig:comparison-graph-animo}}
@@ -583,6 +596,7 @@ of interactive exploration of a network.
   NGF = 15/15, EGF = 0/15, corresponding to a treatment with 50 ng/ml NGF.
   The query asks for 100 time series of the activity levels of all reactants in the model over the first 60 minutes
   of execution.\label{tab:sim-100}}
+\vspace{-1cm}
 \end{table}
 
 \subsection{Model checking performances}\label{subsec:model-checking-performances}
@@ -618,7 +632,7 @@ The tests performed in this section have an uncertainty level set to 0, instead 
 make model checking feasible within seconds.
 
 
-\begin{table*}[htbp]
+\begin{table}[htbp]
   \begin{center}
     \begin{tabular}{|c||r|r||r|r||r|r|}
       \hline
@@ -644,7 +658,8 @@ make model checking feasible within seconds.
   \end{center}
   \caption{UPPAAL processor time and memory usage for reaction- and reactant-centered modeling approaches when computing
   the given queries on the case study from~\cite{animo-ieee}.\label{tab:model-checking}}
-\end{table*}
+\vspace{-.5cm}
+\end{table}
 
 The queries were used with both the reaction- and reactant-centered \ta\ models,
 and returned the same results as expected: in particular, query (1) returned false and all other queries returned true.
@@ -727,6 +742,7 @@ by the ones proposed in~\cite{hidde-templates}, and are shown in Table~\ref{tab:
   $R \Join n$, with $R$ the identifier of a reactant in the model, $\Join \in \{<, \leq, =, \geq, >\}$
   and $n \in [0, g(R)]$ a valid activity level value between 0 and the granularity (number of discrete levels) of $R$.
   \label{tab:model-checking-templates}}
+\vspace{-.5cm}
 \end{table}
 
 If the answer to a model checking query contains a (counter-) example trace, the trace
@@ -741,22 +757,23 @@ Such an addition makes it easier to inspect the behavior of a network by using a
 
 \section{Conclusions and future work}\label{sec:conclusion}
 We have presented here how the ANIMO tool 
-was improved to provide an interactive approach to model checking.
+was improved to provide a more interactive modeling process.
 Thanks to the increased performances of the new reactant-centered modeling approach,
 we are able to obtain answers to model checking queries in a matter of seconds.
-Coherently with the user friendliness of the tool, we ensure that the biologist can access the features
-of model checking without the need to directly deal with \tas\ models.
+Coherently with the user friendliness of the tool, the features
+of model checking are made accessible without the need to directly deal with \tas\ models.
 In this way, ANIMO acts as an intermediary between the biologist and a formal
 representation of biological signaling pathways, letting the experts concentrate
 on investigating the mechanisms of cellular responses.
 
 In order to enforce the concept of user interaction as a primary focus of the tool, we plan to extend
-ANIMO by further extending the support for parameter sensitivity analysis and parameter fitting.
-We already allow for only one numeric parameter per reaction
-and a ``brute force'' parameter sweep is already available, but a more automatic way of adjusting such
-parameters to fit experimental data will allow the user to concentrate more on defining a sensible topology for a pathway.
-Such an automatic search could be limited by specific bounds based on previous knowledge,
-or on a trade-off with performances.
+ANIMO by increasing the support for parameter sensitivity analysis and parameter fitting,
+as a follow-up to what was presented in~\cite{animo-syncop}.
+% We already allow for only one numeric parameter per reaction
+% and a ``brute force'' parameter sweep is already available, but a more automatic way of adjusting such
+% parameters to fit experimental data will allow the user to concentrate more on defining a sensible topology for a pathway.
+% Such an automatic search could be limited by specific bounds based on previous knowledge,
+% or on a trade-off with performances.
 Moreover, inspired by works on automata learning~\cite{test-based-modelling}, we plan to add also the possibility
 to automatically derive a network topology based on experimental data and 
 previous knowledge.

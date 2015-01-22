@@ -117,18 +117,20 @@ by adding a dynamic component to traditional static representations of signaling
 ANIMO allows to compare the behavior of
 a model with wet-lab data, and to explore such behavior in a user-friendly way.
 In order to achieve a good level of user-friendliness for a public of biologists, the complexity of \tas\ is hidden \emph{under the hood},
-presenting ANIMO as a plug-in to Cytoscape~\cite{cytoscape}, a tool specifically developed for visualizing 
+presenting ANIMO as an app for Cytoscape~\cite{cytoscape}, a tool specifically developed for visualizing 
 and elaborating biological networks. Signaling networks are represented in ANIMO using
 the nodes-edges notation normally used in the context of biology (see Fig.~\ref{fig:small-example-net}).
 
-Currently, ANIMO supports interactive exploration of network dynamics based on simulation runs. 
-Model checking queries can be answered through the UPPAAL tool~\cite{uppaal}, but
-the required knowledge of temporal logic together with the usually long response times slows down the investigation process.
+Previously, ANIMO supported only interactive exploration of network dynamics based on simulation runs. 
+Model checking queries could be answered through the UPPAAL tool~\cite{uppaal}, but
+the required knowledge of temporal logic together with the usually long response times slowed down the investigation process.
 In order to pave the way for a widespread use of model checking on non-trivial models of
-signaling networks, we propose here a new \tas\ model that marks a relevant improvement in terms of
-performances with respect to the model currently used in ANIMO. Moreover, consistently with the intents of our tool, we
-present also a user interface for the definition of model checking queries in ANIMO. This will allow a
-user to interrogate an ANIMO model without previous experience in temporal logics.
+signaling networks, we updated ANIMO with a new \tas\ model (presented here). This marks a relevant improvement in terms of
+performances with respect to the model previously used in ANIMO. Moreover, consistently with the intents of our tool, we
+implemented also a user interface for the definition of model checking queries in ANIMO. This allows a
+user to interrogate an ANIMO model without requiring previous experience in temporal logics. These new
+features are available in the latest version of ANIMO, which was recently reimplemented as a Cytoscape 3 app~\cite{animo-app-site}:
+this lets users profit of the additional analysis features made available by the other apps in the Cytoscape environment.
 
 The rest of the paper is organized as follows: Section~\ref{sec:basics} introduces the basic aspects
 of signaling pathways, \tas\ and ANIMO; Section~\ref{sec:animo-new} illustrates a new way of using \tas\ to model
@@ -163,9 +165,9 @@ activation and $\dashv$ represents inhibition (i.e. inactivation).
 
 \begin{figure}[htbp]
 \centering
-\subfloat[\label{fig:small-example-net}]{\includegraphics[scale=\scalaRete]{images/tkk_tk_t_tutto_networkOnly}} \qquad
-\subfloat[\label{fig:small-example01}]{\includegraphics[scale=\scalaRete]{images/tkk_tk_t_tutto01}} \qquad
-\subfloat[\label{fig:small-example02}]{\includegraphics[scale=\scalaRete]{images/tkk_tk_t_tutto02}} \qquad
+\subfloat[\label{fig:small-example-net}]{\includegraphics[scale=\scalaRete]{images/tkk_tk_t_tutto_networkOnly}} \qquad \qquad
+\subfloat[\label{fig:small-example01}]{\includegraphics[scale=\scalaRete]{images/tkk_tk_t_tutto01}} \qquad \qquad
+\subfloat[\label{fig:small-example02}]{\includegraphics[scale=\scalaRete]{images/tkk_tk_t_tutto02}} \qquad \qquad
 \subfloat[\label{fig:small-example03}]{\includegraphics[scale=\scalaRete]{images/tkk_tk_t_tutto03}}
 \caption{A kinase signaling network represented in the nodes-edges form {\bf\protect\subref{fig:small-example-net}}
 and its evolution represented by abstract molecular interactions
@@ -173,7 +175,7 @@ and its evolution represented by abstract molecular interactions
 {\sf T} is the target of the signaling pathway, {\sf TK}
 is the kinase that activates {\sf T}, and {\sf TKK} is the kinase that activates {\sf TK}.
 {\bf\protect\subref{fig:small-example01}} An already active (yellow) {\sf TKK} can bind to
-an inactive (red) {\sf TK}, catalyzing its phosphorylation (i.e. binding of a phosphate group, {\sf P}).
+an inactive (empty) {\sf TK}, catalyzing its phosphorylation (i.e. binding of a phosphate group, {\sf P}).
 This causes a change in the shape of {\sf TK}, activating its enzymatic function {\bf\protect\subref{fig:small-example02}}.
 The active {\sf TK} can in turn activate its target {\sf T}, enabling it to carry out its function {\bf\protect\subref{fig:small-example03}}.
 % {\bf\protect\subref*{fig:small-example-net}} represents the initial state of the network in the
@@ -224,24 +226,25 @@ our models are not limited to kinase networks: other features like different pos
 modifications or gene promotion can be likewise represented, as long as their role has immediate effects on the ability of a
 target to perform its task.
 
-A model in ANIMO is defined through the Cytoscape plug-in user interface (see Fig.~\ref{fig:cytoscape}), where the user inserts
+As ANIMO is a Cytoscape app, models are defined through the Cytoscape user interface (see Fig.~\ref{fig:cytoscape}), where the user inserts
 a node for each molecular species and an edge for each reaction, with $\rightarrow$ indicating activation
 and $\dashv$ indicating inhibition similarly to traditional representations of signaling networks (Fig.~\ref{fig:small-example-net}).
 
 \begin{figure}[htb]
 \begin{center}
-   \includegraphics[width=.6\textwidth]{images/mapk_model_egf4}
+   \includegraphics[width=.7\textwidth]{images/ANIMO3_MAPK_model} %mapk_model_egf4}
 \end{center}
-\caption{The Cytoscape user interface running the ANIMO plug-in
-(image from~\cite{animo-ieee}). The \emph{Network} panel in the center contains the nodes-edges
+\caption{The Cytoscape 3 user interface running the new ANIMO app
+(model from~\cite{animo-ieee}). The \emph{Network} panel in the center contains the nodes-edges
 model of the cross-talking signaling pathways of NGF and EGF, with
 colors indicating node activity levels and shapes representing different protein categories (see the \emph{Legend} on the left).
 The \emph{Results Panel} on the right contains a graph plotting activity levels of selected nodes
 during the first hour of evolution of the model. The slider under the graph
 allows the user to select the time instant (marked as a vertical red line in the graph) on which
-the colors nodes in the \emph{Network} are based.
-The series with the {\sf \_data} suffix is experimental
-data from~\cite{egf-ngf}, considering a treatment with 100~ng/ml EGF.
+the colors nodes in the \emph{Network} are based. The edge thickness is used to give an idea on which reactions are
+occurring more often at the selected time instant.
+The series {\sf Erk (EGF) data} in the graph is the experimental
+data from~\cite{egf-ngf} for the 100~ng/ml EGF treatment.
 \label{fig:cytoscape}}
 \end{figure}
 
@@ -277,12 +280,12 @@ methods for parameter setting in ANIMO can refer to~\cite{animo-syncop}.
 
 
 \section{A new way of modeling signaling pathways with \tas}\label{sec:animo-new}
-We propose here a novel model to represent signaling pathways with \tas\ in ANIMO.
+We present here a novel model to represent signaling pathways with \tas\ in ANIMO.
 We define the model previously used in ANIMO to be \emph{reaction-centered}, as for each reaction
 in the network an instance of a \ta\ template is generated to mimic
 the occurrences of that reaction. Observing that signaling
 networks tend to be highly connected, containing noticeably more reactions than reactants,
-we propose to shift the focus on reactants instead, achieving what we call a \emph{reactant-centered} model.
+we shift the focus on reactants instead, achieving what we call a \emph{reactant-centered} model.
 This change of view is inspired by the classical way in which biological events are modeled
 with ordinary differential equations (ODEs)~\cite{ode-ma-anche-altro}.
 
@@ -340,7 +343,7 @@ where $r_i$ is the rate of reaction $R_i$ and is defined as follows.
 Consider $R_1$ to be the reaction $B \rightarrow A$ with kinetic constant $k_1$.
 Suppose the settings in the ANIMO network for $R_1$ make its rate depend only on the
 activity level of $B$. Then we compute the rate of $R_1$ as $r_1 = [B] \times k_1$, with
-$[B]$ the current activity level of $B$.
+$[B]$ the current activity level of~$B$.
 
 
 
@@ -468,8 +471,9 @@ which is translated back as $a = 1235 \times 10^{-3} = 1.235$.
 % In this case, the number representing the sum $a + b$ differs from the exact result by $c - 1237 \times 10^{-3} = 0.001456$.
 The interested reader can find the UPPAAL definitions and functions needed to compute rate and time values for the \tas\ templates
 % in Appendix~\ref{apx:double-functions} or 
-inside any UPPAAL model file generated by ANIMO with a reactant-centered model type~\footnote{For further instructions, see
-the ANIMO manual at \url{http://fmt.cs.utwente.nl/tools/animo/manual.html}}.
+inside any UPPAAL model file generated by ANIMO with a reactant-centered model type~\footnote{Models generated
+by ANIMO are saved in the system's temporary directory. Further details are available in
+the ANIMO manual at \url{http://fmt.cs.utwente.nl/tools/animo/content/Manual.pdf}}.
 
 
 \subsection{Comparison with the previous \tas\ model}\label{sec:ta-notes}
@@ -483,7 +487,7 @@ example location {\sf waiting} is used to wait before updating the reactant.
 % until the time has come for the reaction to occur. The amount of time to be waited has different meanings:
 % in the reaction-centered model, 
 
-Being based on the same abstractions, the queries the two models can be analyzed with the same
+Being based on the same abstractions, the two models can be analyzed with the same
 UPPAAL queries for all the cases for which biology is involved. The differences can be seen only if the
 analysis focuses on the single automaton level and explicitly refers to locations: such type of analysis
 is normally not necessary when considering the model as a whole and using it for what it is, i.e. an
@@ -496,7 +500,7 @@ behavior of two models using the two different approaches will diverge: the equi
 are still the same.
 Two opposite reactions occurring with the same (or similar) frequency will (nearly) cancel each other out: the
 behavior of the single reactions is explicitly represented in the reaction-centered model and gives rise to more oscillations.
-On the other hand, in the reaction-centered model, the trajectory of a reactant's activity level
+On the other hand, in the reactant-centered model, the trajectory of a reactant's activity level
 is determined taking into account also the cancelling effect of opposite reactions, so the simulations
 will generally contain less oscillations.
 From the user's point of view, graphs will look smoother while still exhibiting the same qualitative behavior,
@@ -509,7 +513,7 @@ reaction $R_A$.
 In the next session we will show that having less oscillations leads in practice to better analysis performances.
 \begin{figure}[!htb]
 \begin{center}
-  \subfloat[Reaction-centered]{\includegraphics[scale=0.07]{images/grafico_ngf_reaction_10levels}\label{fig:comparison-graph-animo-reaction}}\qquad\quad
+  \subfloat[Reaction-centered]{\includegraphics[scale=0.07]{images/grafico_ngf_reaction_10levels}\label{fig:comparison-graph-animo-reaction}}\qquad\qquad
   \subfloat[Reactant-centered]{\includegraphics[scale=0.07]{images/grafico_ngf_reactant_10levels}\label{fig:comparison-graph-animo-reactant}}
 \end{center}
   \caption{Comparison of two ERK activity graphs generated from the model based on the case study from~\cite{animo-ieee} with treatment of 50 ng/ml NGF.
@@ -525,7 +529,7 @@ evaluate the benefit brought by the shift in perspective from a reaction- to a r
 
 All experiments were carried out on an Intel\circledR\ Core$^{\mbox{\scriptsize\texttrademark}}$ i7 CPU at 2.80GHz equipped with 4 Gb RAM
 and running Ubuntu GNU/Linux 14.04.1 64bit.
-UPPAAL version 4.1.19 was used to compute the result of the queries, asking for ``some trace'' with random depth-first search order
+UPPAAL version 4.1.19 64bit was used to compute the result of the queries, asking for ``some trace'' with random depth-first search order
 when an execution trace was expected to be produced. For the simulation queries using the statistical model checking engine, we left
 all options at their default values.
 
@@ -557,7 +561,7 @@ This configuration was chosen as it generates a more interesting behavior from t
 also w.r.t. the model checking queries in Section~\ref{subsec:model-checking-performances};
 the treatment with 100~ng/ml EGF was also tested and gave similar performance results.
 Table~\ref{tab:sim-100} illustrates the computation time and memory usage when performing 100 simulation runs on each of the
-two considered models. Computing the simulation runs took about $92 \%$ less time with the reactant-centered model, using $87 \%$
+two considered models. Computing the simulation runs took about $91 \%$ less time with the reactant-centered model, using $97 \%$
 less memory. This decrease in computation time for long simulation runs brings the approach nearer to the idea
 of interactive exploration of a network.
 
@@ -568,9 +572,9 @@ of interactive exploration of a network.
     Model type & Time (s) & Memory (peak KB) \\
     \hline
     \hline
-    Reaction-centered & 37.14 & 257,928 \\
+    Reaction-centered & 30.72 & 291\,{}576 \\ %37.14 & 257,928 \\
     \hline
-    Reactant-centered & 2.83 & 33,464 \\
+    Reactant-centered & 2.86 & 9\,{}768 \\ %2.83 & 33,464 \\
     \hline
   \end{tabular}
   \end{center}
@@ -624,17 +628,17 @@ make model checking feasible within seconds.
        & \multicolumn{1}{c|}{time (s)}    & \multicolumn{1}{c||}{(peak KB)}    & \multicolumn{1}{c|}{time (s)} & \multicolumn{1}{c||}{(peak KB)} & \multicolumn{1}{c|}{(n-fold)} & \multicolumn{1}{c|}{(n-fold)}\\
       \hline
       \hline
-      (1) & 127.25 & 351\,{}804 & 1.42 & 25\,{}716 & 90 & 14 \\
+      (1) & 126.56 & 523\,{}448 & 1.04 & 9\,{}236 & 122 & 57 \\ %127.25 & 351\,{}804 & 1.42 & 25\,{}716 & 90 & 14 \\
       \hline
-      (2) & 167.64 & 269\,{}932 & 1.93 & 26\,{}112 & 87 & 10 \\
+      (2) & 159.29 & 436\,{}496 & 1.73 & 11\,{}480 & 92 & 38 \\ %167.64 & 269\,{}932 & 1.93 & 26\,{}112 & 87 & 10 \\
       \hline
-      (3) & 150.90 & 318\,{}460 & 1.44 & 26\,{}136 & 105 & 12 \\
+      (3) & 146.09 & 439\,{}484 & 1.04 & 10\,{}384 & 140 & 42 \\ %150.90 & 318\,{}460 & 1.44 & 26\,{}136 & 105 & 12 \\
       \hline
-      (4) & 2.15 & 216\,{}920 & 0.11 & 25\,{}316 & 19 & 9 \\
+      (4) & 0.74 & 293\,{}508 & 0.06 & 7\,{}484 & 12 & 39 \\ %2.15 & 216\,{}920 & 0.11 & 25\,{}316 & 19 & 9 \\
       \hline
-      (5) & 470.56 & 311\,{}568 & 2.22 & 26\,{}648 & 212 & 12 \\
+      (5) & 581.79 & 448\,{}764 & 6.86 & 16\,{}880 & 85 & 27 \\ %470.56 & 311\,{}568 & 2.22 & 26\,{}648 & 212 & 12 \\
       \hline
-      (6) & 453.90 & 357\,{}980 & 2.23 & 26\,{}652 & 204 & 13 \\
+      (6) & 561.01 & 449\,{}248 & 6.42 & 15\,{}852 & 87 & 28 \\ %453.90 & 357\,{}980 & 2.23 & 26\,{}652 & 204 & 13 \\
       \hline
     \end{tabular}
   \end{center}
@@ -659,7 +663,7 @@ The results of the model checking performance test are shown in Table~\ref{tab:m
 % This means that the queries (3) - (6) deal with a larger state space, leading to presumably lower model checking performances.
 Requesting a full inspection of the state space
 as we do when using a query of the type {\tt A[]$\phi$} returning true in cases (5) and (6), allows us to indirectly compare the state space size of the two
-model versions. As the hundreds-fold computation time improvements in Table~\ref{tab:model-checking} show, the reactant-centered model produces
+model versions. As the computation time improvements in Table~\ref{tab:model-checking} show, the reactant-centered model produces
 indeed a noticeably smaller state space, allowing for a higher level of interactivity also when performing non-trivial model checking.
 Moreover, our experiments point out that the reactant-centered approach considerably lowers the memory
 requirements for the model. This is not only due to the absence of possibly large precomputed time tables,
@@ -668,14 +672,14 @@ which can contain thousands of elements each.
 % leads to the generation of two time tables containing $101 \times 101 = 10\,{}201$ elements each.}
 Indeed, this point was further investigated by implementing a reaction-centered model which
 avoids the use of tables and instead makes on-the-fly computations of the time bounds with the same number representation as in the reactant-centered model.
-This resulted in improved performances in the cases of reachability and simulation-based queries, with memory requirements similar to the ones for
-the reactant-centered model. However, in all other cases a much larger amount of memory (more than 2 Gb) was used
+This resulted in improved performances in the cases of reachability and simulation-based queries, with memory requirements closer to the ones for
+the reactant-centered model (0.69 s and 24\,{}796 KB for query (4)). However, in all other cases a much larger amount of memory (around 2 Gb) was used
 with respect to the table-based implementation of the same model, without leading to appreciable benefits in terms of execution time:
-in some cases performances were noticeably deteriorated.
+in some cases performances were noticeably deteriorated (600-800 s for queries (1)-(3)).
 % These findings support the intuitive idea that a reactant-centered approach
 % leads in general to fewer events in a model, and to a smaller state space.
-These findings seem to support the idea that a reactant-centered approach
-leads in general to a smaller state space.
+These findings seem to support the idea that a reactant-centered models
+have a smaller state space.
 
 Note that while the network we consider for the case study is not particularly large, the gain in performances is still considerable
 and promising in the perspective of analyzing more complex networks.

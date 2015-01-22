@@ -76,6 +76,10 @@ Larsen, K.G., Pettersson, P., Yi, W.:
 \newblock International Journal on Software Tools for Technology Transfer
   (STTT) \textbf{1} (1997)  134--152
 
+\bibitem{animo-app-site}
+{Cytoscape 3 ANIMO app}.
+\newblock \url{http://apps.cytoscape.org/apps/animo}
+
 \bibitem{egf-ngf}
 Santos, S.D.M., Verveer, P.J., Bastiaens, P.I.H.:
 \newblock {Growth factor-induced MAPK network topology shapes Erk response

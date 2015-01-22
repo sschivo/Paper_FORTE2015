@@ -11,6 +11,7 @@
 \citation{timed-automata-alur}
 \citation{cytoscape}
 \citation{uppaal}
+\citation{animo-app-site}
 \citation{kegg,phosphosite}
 \@writefile{toc}{\contentsline {section}{\numberline {2}Preliminaries}{3}}
 \newlabel{sec:basics}{{2}{3}}
@@ -24,7 +25,7 @@
 \newlabel{sub@fig:small-example02}{{(c)}{c}}
 \newlabel{fig:small-example03}{{1d}{3}}
 \newlabel{sub@fig:small-example03}{{(d)}{d}}
-\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces A kinase signaling network represented in the nodes-edges form {\bf  \subref {fig:small-example-net}} and its evolution represented by abstract molecular interactions ({\bf  \subref *{fig:small-example01}\discretionary {-}{}{}-{}\subref *{fig:small-example03}}). {\sf  T} is the target of the signaling pathway, {\sf  TK} is the kinase that activates {\sf  T}, and {\sf  TKK} is the kinase that activates {\sf  TK}. {\bf  \subref {fig:small-example01}} An already active (yellow) {\sf  TKK} can bind to an inactive (red) {\sf  TK}, catalyzing its phosphorylation (i.e. binding of a phosphate group, {\sf  P}). This causes a change in the shape of {\sf  TK}, activating its enzymatic function {\bf  \subref {fig:small-example02}}. The active {\sf  TK} can in turn activate its target {\sf  T}, enabling it to carry out its function {\bf  \subref {fig:small-example03}}. }}{3}}
+\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces A kinase signaling network represented in the nodes-edges form {\bf  \subref {fig:small-example-net}} and its evolution represented by abstract molecular interactions ({\bf  \subref *{fig:small-example01}\discretionary {-}{}{}-{}\subref *{fig:small-example03}}). {\sf  T} is the target of the signaling pathway, {\sf  TK} is the kinase that activates {\sf  T}, and {\sf  TKK} is the kinase that activates {\sf  TK}. {\bf  \subref {fig:small-example01}} An already active (yellow) {\sf  TKK} can bind to an inactive (empty) {\sf  TK}, catalyzing its phosphorylation (i.e. binding of a phosphate group, {\sf  P}). This causes a change in the shape of {\sf  TK}, activating its enzymatic function {\bf  \subref {fig:small-example02}}. The active {\sf  TK} can in turn activate its target {\sf  T}, enabling it to carry out its function {\bf  \subref {fig:small-example03}}. }}{3}}
 \@writefile{lof}{\contentsline {subfigure}{\numberline{(a)}{\ignorespaces {}}}{3}}
 \@writefile{lof}{\contentsline {subfigure}{\numberline{(b)}{\ignorespaces {}}}{3}}
 \@writefile{lof}{\contentsline {subfigure}{\numberline{(c)}{\ignorespaces {}}}{3}}
@@ -41,15 +42,13 @@
 \newlabel{sec:animo-old}{{2.3}{4}}
 \citation{animo-ieee}
 \citation{animo-syncop}
-\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces The Cytoscape user interface running the ANIMO plug-in (image from\nobreakspace  {}\cite  {animo-ieee}). The \emph  {Network} panel in the center contains the nodes-edges model of the cross-talking signaling pathways of NGF and EGF, with colors indicating node activity levels and shapes representing different protein categories (see the \emph  {Legend} on the left). The \emph  {Results Panel} on the right contains a graph plotting activity levels of selected nodes during the first hour of evolution of the model. The slider under the graph allows the user to select the time instant (marked as a vertical red line in the graph) on which the colors nodes in the \emph  {Network} are based. The series with the {\sf  \_data} suffix is experimental data from\nobreakspace  {}\cite  {egf-ngf}, considering a treatment with 100\nobreakspace  {}ng/ml EGF. }}{5}}
+\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces The Cytoscape 3 user interface running the new ANIMO app (model from\nobreakspace  {}\cite  {animo-ieee}). The \emph  {Network} panel in the center contains the nodes-edges model of the cross-talking signaling pathways of NGF and EGF, with colors indicating node activity levels and shapes representing different protein categories (see the \emph  {Legend} on the left). The \emph  {Results Panel} on the right contains a graph plotting activity levels of selected nodes during the first hour of evolution of the model. The slider under the graph allows the user to select the time instant (marked as a vertical red line in the graph) on which the colors nodes in the \emph  {Network} are based. The edge thickness is used to give an idea on which reactions are occurring more often at the selected time instant. The series {\sf  Erk (EGF) data} in the graph is the experimental data from\nobreakspace  {}\cite  {egf-ngf} for the 100\nobreakspace  {}ng/ml EGF treatment. }}{5}}
 \newlabel{fig:cytoscape}{{2}{5}}
 \citation{ode-ma-anche-altro}
 \@writefile{toc}{\contentsline {section}{\numberline {3}A new way of modeling signaling pathways with TA}{6}}
 \newlabel{sec:animo-new}{{3}{6}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.1}The reactant-centered approach}{6}}
 \newlabel{sec:reactant-centered}{{3.1}{6}}
-\citation{animo-ieee}
-\citation{animo-ieee}
 \newlabel{fig:network-abcd}{{3a}{7}}
 \newlabel{sub@fig:network-abcd}{{(a)}{a}}
 \newlabel{fig:ta-new-model}{{3b}{7}}
@@ -64,17 +63,17 @@
 \@writefile{lof}{\contentsline {subfigure}{\numberline{(b)}{\ignorespaces {$R_A$}}}{7}}
 \@writefile{lof}{\contentsline {subfigure}{\numberline{(c)}{\ignorespaces {$R_1: B \rightarrow A$ }}}{7}}
 \@writefile{lof}{\contentsline {subfigure}{\numberline{(d)}{\ignorespaces {$R_3: D \dashv A$ }}}{7}}
+\citation{animo-ieee}
+\citation{animo-ieee}
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.2}Timed Automata reactant-centered model}{8}}
 \newlabel{sec:ta-model}{{3.2}{8}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.3}Computations on the fly}{9}}
-\newlabel{sec:rates-ta-model}{{3.3}{9}}
 \citation{animo-ieee}
 \citation{animo-ieee}
-\citation{animo-ieee}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.3}Computations on the fly}{10}}
+\newlabel{sec:rates-ta-model}{{3.3}{10}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.4}Comparison with the previous TA\ model}{10}}
 \newlabel{sec:ta-notes}{{3.4}{10}}
-\@writefile{toc}{\contentsline {section}{\numberline {4}Reaction-centered VS reactant-centered}{10}}
-\newlabel{sec:animo-comparison}{{4}{10}}
+\citation{animo-ieee}
 \citation{egf-ngf}
 \citation{animo-ieee}
 \citation{uppaal-smc}
@@ -86,6 +85,8 @@
 \newlabel{fig:comparison-graph-animo}{{4}{11}}
 \@writefile{lof}{\contentsline {subfigure}{\numberline{(a)}{\ignorespaces {Reaction-centered}}}{11}}
 \@writefile{lof}{\contentsline {subfigure}{\numberline{(b)}{\ignorespaces {Reactant-centered}}}{11}}
+\@writefile{toc}{\contentsline {section}{\numberline {4}Reaction-centered VS reactant-centered}{11}}
+\newlabel{sec:animo-comparison}{{4}{11}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {4.1}Simulation cost}{11}}
 \citation{animo-ieee}
 \citation{animo-ieee}
@@ -96,19 +97,19 @@
 \citation{animo-ieee}
 \citation{animo-ieee}
 \citation{animo-ieee}
-\@writefile{lot}{\contentsline {table}{\numberline {2}{\ignorespaces UPPAAL processor time and memory usage for reaction- and reactant-centered modeling approaches when computing the given queries on the case study from\nobreakspace  {}\cite  {animo-ieee}.}}{13}}
-\newlabel{tab:model-checking}{{2}{13}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.3}Analysis of the results}{13}}
 \citation{hidde-templates}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.3}Analysis of the results}{14}}
+\@writefile{lot}{\contentsline {table}{\numberline {2}{\ignorespaces UPPAAL processor time and memory usage for reaction- and reactant-centered modeling approaches when computing the given queries on the case study from\nobreakspace  {}\cite  {animo-ieee}.}}{14}}
+\newlabel{tab:model-checking}{{2}{14}}
 \@writefile{toc}{\contentsline {section}{\numberline {5}Model checking in ANIMO}{14}}
 \newlabel{sec:animo-model-checking-ui}{{5}{14}}
-\citation{test-based-modelling}
 \@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces The interface used in ANIMO to compose a model checking query. The settings on the three lines correspond, from top to bottom, to queries (4), (3) and (6).}}{15}}
 \newlabel{fig:model-checking-ui}{{5}{15}}
 \@writefile{lot}{\contentsline {table}{\numberline {3}{\ignorespaces Mapping between queries as presented in ANIMO user interface and the corresponding model checking queries in UPPAAL syntax. State formulas indicated by $\phi $ and $\psi $ are all in the form $R \Join n$, with $R$ the identifier of a reactant in the model, $\Join \in \{<, \leq , =, \geq , >\}$ and $n \in [0, g(R)]$ a valid activity level value between 0 and the granularity (number of discrete levels) of $R$. }}{15}}
 \newlabel{tab:model-checking-templates}{{3}{15}}
 \@writefile{toc}{\contentsline {section}{\numberline {6}Conclusions and future work}{15}}
 \newlabel{sec:conclusion}{{6}{15}}
+\citation{test-based-modelling}
 \citation{uppaal-smc}
 \citation{uppaal-multi-core1}
 \bibstyle{splncs}
@@ -126,10 +127,11 @@
 \bibcite{timed-automata-alur}{11}
 \bibcite{cytoscape}{12}
 \bibcite{uppaal}{13}
-\bibcite{egf-ngf}{14}
-\bibcite{animo-syncop}{15}
-\bibcite{ode-ma-anche-altro}{16}
-\bibcite{uppaal-smc}{17}
-\bibcite{hidde-templates}{18}
-\bibcite{test-based-modelling}{19}
-\bibcite{uppaal-multi-core1}{20}
+\bibcite{animo-app-site}{14}
+\bibcite{egf-ngf}{15}
+\bibcite{animo-syncop}{16}
+\bibcite{ode-ma-anche-altro}{17}
+\bibcite{uppaal-smc}{18}
+\bibcite{hidde-templates}{19}
+\bibcite{test-based-modelling}{20}
+\bibcite{uppaal-multi-core1}{21}

@@ -5,36 +5,37 @@ The style file: splncs.bst
 Database file #1: Paper_FORTE15.bib
 Warning--empty booktitle in copasi
 Warning--empty title in animo-site
-You've used 20 entries,
+Warning--empty title in animo-app-site
+You've used 21 entries,
             2087 wiz_defined-function locations,
-            641 strings with 8512 characters,
-and the built_in function-call counts, 7767 in all, are:
-= -- 763
-> -- 338
+            644 strings with 8591 characters,
+and the built_in function-call counts, 7888 in all, are:
+= -- 771
+> -- 342
 < -- 25
-+ -- 117
-- -- 97
-* -- 629
-:= -- 1045
-add.period$ -- 35
-call.type$ -- 20
++ -- 119
+- -- 98
+* -- 632
+:= -- 1063
+add.period$ -- 36
+call.type$ -- 21
 change.case$ -- 19
 chr.to.int$ -- 0
-cite$ -- 22
-duplicate$ -- 386
-empty$ -- 649
-format.name$ -- 97
-if$ -- 1850
+cite$ -- 24
+duplicate$ -- 392
+empty$ -- 667
+format.name$ -- 98
+if$ -- 1878
 int.to.chr$ -- 0
-int.to.str$ -- 20
+int.to.str$ -- 21
 missing$ -- 19
-newline$ -- 106
-num.names$ -- 30
-pop$ -- 47
+newline$ -- 110
+num.names$ -- 31
+pop$ -- 53
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 0
-skip$ -- 285
+skip$ -- 291
 stack$ -- 0
 substring$ -- 559
 swap$ -- 234
@@ -42,8 +43,8 @@ text.length$ -- 25
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 0
-warning$ -- 2
-while$ -- 77
-width$ -- 22
-write$ -- 248
-(There were 2 warnings)
+warning$ -- 3
+while$ -- 78
+width$ -- 23
+write$ -- 255
+(There were 3 warnings)

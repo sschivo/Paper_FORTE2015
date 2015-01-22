@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.5.22)  20 JAN 2015 16:49
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.5.22)  22 JAN 2015 10:43
 entering extended mode
  restricted \write18 enabled.
  Source specials enabled.
@@ -404,7 +404,7 @@ File: uwasy.fd 2003/10/30 v2.0 Wasy-2 symbol font definitions
 ) [1
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
-Underfull \vbox (badness 10000) has occurred while \output is active []
+Underfull \vbox (badness 2158) has occurred while \output is active []
 
  [2]
 <images/tkk_tk_t_tutto_networkOnly.pdf, id=16, 83.43039pt x 457.64276pt>
@@ -412,120 +412,122 @@ File: images/tkk_tk_t_tutto_networkOnly.pdf Graphic file (type pdf)
 
 <use images/tkk_tk_t_tutto_networkOnly.pdf>
 Package pdftex.def Info: images/tkk_tk_t_tutto_networkOnly.pdf used on input li
-ne 166.
+ne 168.
 (pdftex.def)             Requested size: 13.34912pt x 73.22433pt.
 
-<images/tkk_tk_t_tutto01.pdf, id=17, 334.8008pt x 434.46315pt>
+<images/tkk_tk_t_tutto01.pdf, id=17, 334.81085pt x 434.48322pt>
 File: images/tkk_tk_t_tutto01.pdf Graphic file (type pdf)
 
 <use images/tkk_tk_t_tutto01.pdf>
-Package pdftex.def Info: images/tkk_tk_t_tutto01.pdf used on input line 167.
-(pdftex.def)             Requested size: 53.56921pt x 69.51552pt.
+Package pdftex.def Info: images/tkk_tk_t_tutto01.pdf used on input line 169.
+(pdftex.def)             Requested size: 53.57082pt x 69.51872pt.
 
-<images/tkk_tk_t_tutto02.pdf, id=18, 411.62784pt x 417.50983pt>
+<images/tkk_tk_t_tutto02.pdf, id=18, 411.61778pt x 417.51984pt>
 File: images/tkk_tk_t_tutto02.pdf Graphic file (type pdf)
 
 <use images/tkk_tk_t_tutto02.pdf>
-Package pdftex.def Info: images/tkk_tk_t_tutto02.pdf used on input line 168.
-(pdftex.def)             Requested size: 65.86179pt x 66.80293pt.
+Package pdftex.def Info: images/tkk_tk_t_tutto02.pdf used on input line 170.
+(pdftex.def)             Requested size: 65.86018pt x 66.80453pt.
 
 <images/tkk_tk_t_tutto03.pdf, id=19, 199.76633pt x 456.00362pt>
 File: images/tkk_tk_t_tutto03.pdf Graphic file (type pdf)
 
 <use images/tkk_tk_t_tutto03.pdf>
-Package pdftex.def Info: images/tkk_tk_t_tutto03.pdf used on input line 169.
+Package pdftex.def Info: images/tkk_tk_t_tutto03.pdf used on input line 171.
 (pdftex.def)             Requested size: 31.96326pt x 72.96207pt.
  [3 <./images/tkk_tk_t_tutto_networkOnly.pdf> <./images/tkk_tk_t_tutto01.pdf> <
 ./images/tkk_tk_t_tutto02.pdf> <./images/tkk_tk_t_tutto03.pdf>]
-<images/mapk_model_egf4.png, id=52, 1041.8925pt x 755.82375pt>
-File: images/mapk_model_egf4.png Graphic file (type png)
+<images/ANIMO3_MAPK_model.png, id=52, 1322.9425pt x 940.51375pt>
+File: images/ANIMO3_MAPK_model.png Graphic file (type png)
 
-<use images/mapk_model_egf4.png>
-Package pdftex.def Info: images/mapk_model_egf4.png used on input line 233.
-(pdftex.def)             Requested size: 208.27623pt x 151.08133pt.
- [4] [5 <./images/mapk_model_egf4.png>]
+<use images/ANIMO3_MAPK_model.png>
+Package pdftex.def Info: images/ANIMO3_MAPK_model.png used on input line 235.
+(pdftex.def)             Requested size: 242.98541pt x 172.74377pt.
+ [4] [5 <./images/ANIMO3_MAPK_model.png>]
 \reactantTAheight=\skip59
 
 <images/Reactant_R3.pdf, id=64, 550.055pt x 285.065pt>
 File: images/Reactant_R3.pdf Graphic file (type pdf)
 
 <use images/Reactant_R3.pdf>
-Package pdftex.def Info: images/Reactant_R3.pdf used on input line 304.
+Package pdftex.def Info: images/Reactant_R3.pdf used on input line 307.
 (pdftex.def)             Requested size: 192.52213pt x 99.77423pt.
 
 <images/network_abcd.pdf, id=65, 97.3584pt x 74.43399pt>
 File: images/network_abcd.pdf Graphic file (type pdf)
 
 <use images/network_abcd.pdf>
-Package pdftex.def Info: images/network_abcd.pdf used on input line 308.
+Package pdftex.def Info: images/network_abcd.pdf used on input line 311.
 (pdftex.def)             Requested size: 97.35815pt x 74.43379pt.
 
-Overfull \hbox (34.87846pt too wide) in paragraph at lines 308--308
+Overfull \hbox (34.87846pt too wide) in paragraph at lines 311--311
  [] 
  []
 
 File: images/Reactant_R3.pdf Graphic file (type pdf)
 <use images/Reactant_R3.pdf>
-Package pdftex.def Info: images/Reactant_R3.pdf used on input line 309.
+Package pdftex.def Info: images/Reactant_R3.pdf used on input line 312.
 (pdftex.def)             Requested size: 192.52213pt x 99.77423pt.
 
 <images/Reaction_B_A.pdf, id=66, 555.07375pt x 438.63875pt>
 File: images/Reaction_B_A.pdf Graphic file (type pdf)
 
 <use images/Reaction_B_A.pdf>
-Package pdftex.def Info: images/Reaction_B_A.pdf used on input line 310.
+Package pdftex.def Info: images/Reaction_B_A.pdf used on input line 313.
 (pdftex.def)             Requested size: 138.76808pt x 109.65941pt.
 
 <images/Reaction_D_A.pdf, id=67, 555.07375pt x 438.63875pt>
 File: images/Reaction_D_A.pdf Graphic file (type pdf)
 
 <use images/Reaction_D_A.pdf>
-Package pdftex.def Info: images/Reaction_D_A.pdf used on input line 312.
+Package pdftex.def Info: images/Reaction_D_A.pdf used on input line 315.
 (pdftex.def)             Requested size: 138.76808pt x 109.65941pt.
- [6] [7 <./images/network_abcd.pdf> <./images/Reactant_R3.pdf> <./images/Reacti
-on_B_A.pdf> <./images/Reaction_D_A.pdf>] [8]
-[9]
-<images/grafico_ngf_reaction_10levels.png, id=109, 1744.5175pt x 969.6225pt>
+ [6]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [7 <./images/network_abcd.pdf> <./images/Reactant_R3.pdf> <./images/Reaction_B
+_A.pdf> <./images/Reaction_D_A.pdf>] [8]
+Underfull \vbox (badness 2662) has occurred while \output is active []
+
+ [9]
+<images/grafico_ngf_reaction_10levels.png, id=108, 1744.5175pt x 969.6225pt>
 File: images/grafico_ngf_reaction_10levels.png Graphic file (type png)
 
 <use images/grafico_ngf_reaction_10levels.png>
 Package pdftex.def Info: images/grafico_ngf_reaction_10levels.png used on input
- line 512.
+ line 516.
 (pdftex.def)             Requested size: 122.1287pt x 67.88051pt.
 
-<images/grafico_ngf_reactant_10levels.png, id=110, 1744.5175pt x 969.6225pt>
+<images/grafico_ngf_reactant_10levels.png, id=109, 1744.5175pt x 969.6225pt>
 File: images/grafico_ngf_reactant_10levels.png Graphic file (type png)
 
 <use images/grafico_ngf_reactant_10levels.png>
 Package pdftex.def Info: images/grafico_ngf_reactant_10levels.png used on input
- line 513.
+ line 517.
 (pdftex.def)             Requested size: 122.1287pt x 67.88051pt.
  [10] [11 <./images/grafico_ngf_reaction_10levels.png (PNG copy)> <./images/gra
 fico_ngf_reactant_10levels.png (PNG copy)>]
-LaTeX Font Info:    Try loading font information for OMS+cmtt on input line 581
+LaTeX Font Info:    Try loading font information for OMS+cmtt on input line 585
 .
  (/usr/share/texmf/tex/latex/R/tex/latex/omscmtt.fd
 File: omscmtt.fd 
 )
 LaTeX Font Info:    Font shape `OMS/cmtt/m/n' in size <9> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 581.
- [12]
-Underfull \vbox (badness 2277) has occurred while \output is active []
-
- [13]
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 585.
+ [12] [13]
 <images/model_checking_ui.png, id=128, 899.36pt x 352.31625pt>
 File: images/model_checking_ui.png Graphic file (type png)
 
 <use images/model_checking_ui.png>
-Package pdftex.def Info: images/model_checking_ui.png used on input line 694.
+Package pdftex.def Info: images/model_checking_ui.png used on input line 698.
 (pdftex.def)             Requested size: 242.98541pt x 95.18579pt.
  [14] [15 <./images/model_checking_ui.png>]
 (./Paper_FORTE15.bbl [16]) [17] (./Paper_FORTE15.aux) ) 
 Here is how much of TeX's memory you used:
- 5067 strings out of 493304
- 75253 string characters out of 6139871
- 156266 words of memory out of 5000000
- 8404 multiletter control sequences out of 15000+600000
+ 5068 strings out of 493304
+ 75279 string characters out of 6139871
+ 158271 words of memory out of 5000000
+ 8405 multiletter control sequences out of 15000+600000
  12974 words of font info for 51 fonts, out of 8000000 for 9000
  957 hyphenation exceptions out of 8191
  38i,11n,47p,1454b,455s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -551,7 +553,7 @@ fb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></u
 sr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt9.pfb></usr/shar
 e/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/share
 /texlive/texmf-dist/fonts/type1/public/wasy/wasy9.pfb>
-Output written on Paper_FORTE15.pdf (17 pages, 615283 bytes).
+Output written on Paper_FORTE15.pdf (17 pages, 639699 bytes).
 PDF statistics:
  216 PDF objects out of 1000 (max. 8388607)
  145 compressed objects within 2 object streams

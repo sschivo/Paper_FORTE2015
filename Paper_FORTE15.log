@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.5.22)  22 JAN 2015 16:36
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.5.22)  9 FEB 2015 15:11
 entering extended mode
  restricted \write18 enabled.
  Source specials enabled.
@@ -524,7 +524,7 @@ Package pdftex.def Info: images/model_checking_ui.png used on input line 718.
 Here is how much of TeX's memory you used:
  5068 strings out of 493304
  75279 string characters out of 6139871
- 157250 words of memory out of 5000000
+ 157323 words of memory out of 5000000
  8405 multiletter control sequences out of 15000+600000
  12974 words of font info for 51 fonts, out of 8000000 for 9000
  957 hyphenation exceptions out of 8191
@@ -551,7 +551,7 @@ ti9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pf
 b></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt9.pfb></usr
 /share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/
 share/texlive/texmf-dist/fonts/type1/public/wasy/wasy9.pfb>
-Output written on Paper_FORTE15.pdf (17 pages, 637751 bytes).
+Output written on Paper_FORTE15.pdf (17 pages, 637763 bytes).
 PDF statistics:
  216 PDF objects out of 1000 (max. 8388607)
  145 compressed objects within 2 object streams
